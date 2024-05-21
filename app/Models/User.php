@@ -25,6 +25,10 @@ class User extends Authenticatable
         'username',
         'bio',
         'is_active',
+        'gender',
+        'interest',
+        'phone_number',
+        'date_of_birth'
     ];
 
     /**
@@ -48,5 +52,22 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'creator_id');
+    }
+
+    // Relasi ke model LikesPost
+    public function likes()
+    {
+        return $this->hasMany(LikesPost::class);
+    }
+
+    // Relasi ke model Bookmark
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
     }
 }

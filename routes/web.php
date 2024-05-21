@@ -1,9 +1,12 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommunityController;
 
 // sudah login
 Route::middleware(['auth'])->group(function () {
@@ -17,12 +20,34 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/settings', [MainController::class, 'setViewsettings'])->name('settings');
     
     Route::get('/home', [MainController::class, 'setViewhome'])->name('home');
+    
+    Route::get('/community', [MainController::class, 'setViewCommunity'])->name('community');
+
+    Route::post('/update-profile', [MainController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('/update-password', [MainController::class, 'updatePassword'])->name('password.update');
+
+
+
+    Route::post('/post', [PostController::class, 'uploadPost'])->name('uploadPost');
+    Route::post('/like-post', [PostController::class, 'likePost'])->name('like.post');
+    Route::post('/bookmark-post', [PostController::class, 'bookmarkPost'])->name('bookmark.post');
+
+
+    Route::post('/communities', [CommunityController::class, 'requestCommunity'])->name('requestCommunity');
+
 
 
 
     
     // login dan rolenya sebagai admin
     Route::middleware(['adminCheck'])->group(function (){
+        Route::get('/admin/community', [AdminController::class, 'setViewTableCommunity'])->name('tableCommunity');
+        Route::get('/admin/event', [AdminController::class, 'setViewTableEvent'])->name('tableEvent');
+        Route::get('/admin/user', [AdminController::class, 'setViewTableUser'])->name('tableUser');
+
+        Route::post('/community/accept', [CommunityController::class, 'acceptCommunity'])->name('acceptCommunity');
+
+
 
     });
 
@@ -62,14 +87,15 @@ Route::middleware(['guest'])->group(function () {
 // halaman apa saja yang bisa diakses user jika dia belum login
 Route::get('/', function () {
 
-    return redirect(route('login'));
+    // return redirect(route('login'));
+    return redirect(route('intro'));
 
 });
 
-// Route::get('/home', function () {
+Route::get('/introduction', function () {
 
-//     return 'hello';
+    return view('intro');
 
-// })->name('home');
+})->name('intro');
 
 

@@ -28,20 +28,20 @@
 							<div style="position: relative; text-align: center; z-index: 1;">
 								<h2>Profile</h2>
 								<div style="position: relative; display: inline-block;">
-									<div class="rounded-circle overflow-hidden border border-dark shadow" style="width: 140px; height: 140px;">
-										<img id="profileImage" src="{{ $avatar }}" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
-									</div>
+									<img id="profileImage" src="{{ $avatar }}" alt="Profile Image" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
 									<button id="changeImageButton" class="ui icon button circular pencil btn-light" style="position: absolute; bottom: 0; right: 0; border: 1px solid black;">
-									<i class="pencil icon"></i>
-									</button>                                    
+										<i class="pencil icon"></i>
+									</button>
 									<input type="file" id="imageInput" accept="image/*" style="display: none;">
 								</div>
+
+
 								<div style="text-align: center; margin-top: 20px;">
 									<!-- Adjusted margin-top to push the content below the centered profile picture -->
-									<h2 class="mt-3 mb-2">{{ $name }}</h2>
-									<span class="mt-3 mb-2">{{ '@' . $username }}</span>
+									<h2 class="mt-3 mb-2">{{$name}}</h2>
+									<span class="mt-3 mb-2">{{ '@'.$username }}</span>
 									<p class="fs-6 mt-2 mb-2">
-										<span style="color: orange; margin-right: 8px;">Business </span> • <span style="color: #9747FF; margin-left: 8px;"> Finance</span>
+										<span style="color: {{ $interest == 'Business' ? 'orange' : '#9747FF' }}; margin-right: 8px;">• {{$interest}}</span>
 									</p>
 									<div class="user-stats">
 										<div class="d-flex justify-content-center fs-6" style="margin-top: 30px;">
@@ -95,13 +95,16 @@
 									</div>
 									<div class="modal-body">
 										<h5 class="text-secondary">Name</h5>
-										<input type="text" class="form-control" id="nameInput" value="Christopher Kim">
-										<p style="margin-top: 5px;">Your name can only be changed once every 1 month.</p>
-									</div>
-									<div class="modal-footer d-flex justify-content-center">
-										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="saveName()">Save changes</button>
-									</div>
+										<form method="POST" action="{{ route('updateProfile') }}">
+											@csrf
+											<input type="text" class="form-control" id="nameInput" value="{{ $name }}" name="name">
+											<p style="margin-top: 5px;">Your name can only be changed once every 1 month.</p>
+										</div>
+										<div class="modal-footer d-flex justify-content-center">
+											<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
+											<button type="submit" class="btn btn-secondary" onclick="saveName()">Save changes</button>
+										</div>
+										</form>
 								</div>
 							</div>
 						</div>
@@ -112,7 +115,7 @@
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 70px;">
 							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#usernameModal">
-							<span id="usernameSpan">@stoper_kim</span>
+							<span id="usernameSpan">{{ '@'.$username }}</span>
 							<i class="angle right icon" style="margin-left: 10px;"></i>
 							</button>
 						</div>
@@ -125,13 +128,17 @@
 									</div>
 									<div class="modal-body">
 										<h5 class="text-secondary">New Username</h5>
-										<input type="text" class="form-control" id="newUsernameInput">
-										<p style="margin-top: 5px;">www.thrivian.org/@your_username</p>
-										<p style="margin-top: 5px;">Usernames can containt only letters, numbers, underscores, and periods. Changing your username will also change your profile link.</p>
-									</div>
-									<div class="modal-footer d-flex justify-content-center">
-										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="saveUsername()">Save changes</button>
+										<form method="POST" action="{{ route('updateProfile') }}">
+											@csrf
+											<input type="text" class="form-control" id="newUsernameInput" value="{{ $username }}" name="username">
+											<p style="margin-top: 5px;">www.thrivian.org/@your_username</p>
+											<p style="margin-top: 5px;">Usernames can containt only letters, numbers, underscores, and periods. Changing your username will also change your profile link.</p>
+										</div>
+										<div class="modal-footer d-flex justify-content-center">
+											<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
+											<button type="submit" class="btn btn-secondary" onclick="saveUsername()">Save changes</button>
+										</form>
+										
 									</div>
 								</div>
 							</div>
@@ -143,7 +150,7 @@
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 70px;">
 							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#interestModal">
-							<span id="selectedInterest">Business</span>
+							<span id="selectedInterest">{{ $interest }}</span>
 							<i class="angle right icon" style="margin-left: 10px;"></i>
 							</button>
 						</div>
@@ -157,7 +164,9 @@
 									</div>
 									<div class="modal-body">
 										<h5 class="text-secondary">Interest to</h5>
-										<select class="form-select" id="interestSelect">
+										<form method="POST" action="{{ route('updateProfile') }}">
+										@csrf
+										<select class="form-select" id="interestSelect" name="interest">
 											<option value="Business">business</option>
 											<option value="Finance">Finance</option>
 											<option value="Self Development">Self Development</option>
@@ -165,8 +174,9 @@
 									</div>
 									<div class="modal-footer d-flex justify-content-center">
 										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="saveInterest()">Save changes</button>
+										<button type="submit" class="btn btn-secondary" onclick="saveInterest()">Save changes</button>
 									</div>
+										</form>
 								</div>
 							</div>
 						</div>
@@ -177,7 +187,7 @@
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 70px;">
 							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#bioModal">
-							<span id="userBio">{{ $bio }}</span>
+							<span id="userBio">{{ implode(' ', array_slice(explode(' ', $bio), 0, 5)) }}...</span>
 							<i class="angle right icon" style="margin-left: 10px;"></i>
 							</button>
 						</div>
@@ -191,11 +201,14 @@
 									</div>
 									<div class="modal-body">
 										<h5 class="text-secondary">Bio</h5>
-										<textarea class="form-control" id="bioTextarea" rows="3">{{ $bio }}</textarea>
+										<form method="POST" action="{{ route('updateProfile') }}">
+										@csrf
+										<textarea class="form-control" id="bioTextarea" rows="3" name="bio">{{ $bio }}</textarea>
 									</div>
 									<div class="modal-footer d-flex justify-content-center">
 										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="saveBio()">Save changes</button>
+										<button type="submit" class="btn btn-secondary" onclick="saveBio()">Save changes</button>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -207,7 +220,7 @@
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 70px;">
 							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#genderModal">
-							<span id="selectedGender">Male</span>
+							<span id="selectedGender">{{ $gender }}</span>
 							<i class="angle right icon" style="margin-left: 10px;"></i>
 							</button>
 						</div>
@@ -221,7 +234,9 @@
 									</div>
 									<div class="modal-body">
 										<h5 class="text-secondary">Gender</h5>
-										<select class="form-select" id="genderSelect">
+										<form method="POST" action="{{ route('updateProfile') }}">
+										@csrf
+										<select class="form-select" id="genderSelect" name="gender">
 											<option value="Male">Male</option>
 											<option value="Female">Female</option>
 											<option value="Other">Other</option>
@@ -229,8 +244,9 @@
 									</div>
 									<div class="modal-footer d-flex justify-content-center">
 										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="saveGender()">Save changes</button>
+										<button type="submit" class="btn btn-secondary" onclick="saveGender()">Save changes</button>
 									</div>
+										</form>
 								</div>
 							</div>
 						</div>
@@ -245,27 +261,8 @@
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 70px;">
 							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#emailModal">
-							<span id="userEmail">example@example.com</span>
-							<i class="angle right icon" style="margin-left: 10px;"></i>
+							<span id="userEmail">{{ $email }}</span>
 							</button>
-						</div>
-						<div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-centered">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="emailModalLabel">Change Email</h4>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<h5 class="text-secondary">New Email</h5>
-										<input type="email" class="form-control" id="newEmailInput">
-									</div>
-									<div class="modal-footer d-flex justify-content-center">
-										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="saveEmail()">Save changes</button>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 					<div style="display: flex; align-items: center; margin-left: 40px; margin-top: 15px;">
@@ -281,18 +278,25 @@
 						<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered">
 								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="passwordModalLabel">Change Password</h4>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<h5 class="text-secondary">New Password</h5>
-										<input type="password" class="form-control" id="newPasswordInput">
-									</div>
-									<div class="modal-footer d-flex justify-content-center">
-										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="savePassword()">Save changes</button>
-									</div>
+									<form method="POST" action="{{ route('password.update') }}">
+										@csrf
+										<div class="modal-header">
+											<h4 class="modal-title" id="passwordModalLabel">Change Password</h4>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<h5 class="text-secondary">Current Password</h5>
+											<input type="password" name="current_password" class="form-control" required>
+											<h5 class="text-secondary">New Password</h5>
+											<input type="password" name="new_password" class="form-control" required>
+											<h5 class="text-secondary">Confirm New Password</h5>
+											<input type="password" name="new_password_confirmation" class="form-control" required>
+										</div>
+										<div class="modal-footer d-flex justify-content-center">
+											<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
+											<button type="submit" class="btn btn-secondary">Save changes</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -303,7 +307,7 @@
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 70px;">
 							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#phoneModal">
-							<span id="userPhone">+1234567890</span>
+							<span id="userPhone">{{ $phone_number }}</span>
 							<i class="angle right icon" style="margin-left: 10px;"></i>
 							</button>
 						</div>
@@ -316,11 +320,14 @@
 									</div>
 									<div class="modal-body">
 										<h5 class="text-secondary">New Phone Number</h5>
-										<input type="text" class="form-control" id="newPhoneInput">
+										<form method="POST" action="{{ route('updateProfile') }}">
+										@csrf
+										<input type="text" class="form-control" id="newPhoneInput" name="phone_number" value="{{ $phone_number }}">
 									</div>
 									<div class="modal-footer d-flex justify-content-center">
 										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="savePhoneNumber()">Save changes</button>
+										<button type="submit" class="btn btn-secondary" onclick="savePhoneNumber()">Save changes</button>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -332,7 +339,7 @@
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 70px;">
 							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#dobModal">
-							<span id="userDob">January 1, 2000</span>
+							<span id="userDob">{{ (new DateTime($date_of_birth))->format('F j, Y') }}</span>
 							<i class="angle right icon" style="margin-left: 10px;"></i>
 							</button>
 						</div>
@@ -345,11 +352,14 @@
 									</div>
 									<div class="modal-body">
 										<h5 class="text-secondary">New Date of Birth</h5>
-										<input type="date" class="form-control" id="newDobInput">
+										<form method="POST" action="{{ route('updateProfile') }}">
+										@csrf
+										<input type="date" class="form-control" id="newDobInput" name="date_of_birth" value="{{ $date_of_birth }}">
 									</div>
 									<div class="modal-footer d-flex justify-content-center">
 										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="saveDateOfBirth()">Save changes</button>
+										<button type="submit" class="btn btn-secondary" onclick="saveDateOfBirth()">Save changes</button>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -361,7 +371,7 @@
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 70px;">
 							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#locationModal">
-							<span id="userLocation">New York, USA</span>
+							<span id="userLocation">{{ $location }}</span>
 							<i class="angle right icon" style="margin-left: 10px;"></i>
 							</button>
 						</div>
@@ -373,12 +383,15 @@
 										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 									</div>
 									<div class="modal-body">
+									<form method="POST" action="{{ route('updateProfile') }}">
+										@csrf
 										<h5 class="text-secondary">New Location</h5>
-										<input type="text" class="form-control" id="newLocationInput">
+										<input type="text" class="form-control" id="newLocationInput" name="location" value="{{$location}}">
 									</div>
 									<div class="modal-footer d-flex justify-content-center">
 										<button type="button" class="btn btn-light me-2 border-dark" data-bs-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-secondary" onclick="saveLocation()">Save changes</button>
+										<button type="submit" class="btn btn-secondary" onclick="saveLocation()">Save changes</button>
+									</form>
 									</div>
 								</div>
 							</div>
@@ -437,17 +450,6 @@
 					</div>
 					<div style="display: flex; align-items: center; margin-left: 40px; margin-top: 15px;">
 						<div style="flex: 1;">
-							<span style="font-weight: bold;">Change Password</span>
-						</div>
-						<div style="flex: 1; text-align: right; margin-right: 70px;">
-							<button type="button" class="btn btn-link text-dark" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#emailModal">
-							<span id="userEmail"></span>
-							<i class="angle right icon" style="margin-left: 10px;"></i>
-							</button>
-						</div>
-					</div>
-					<div style="display: flex; align-items: center; margin-left: 40px; margin-top: 15px;">
-						<div style="flex: 1;">
 							<span style="font-weight: bold;">Allow public seen my profile</span>
 						</div>
 						<div style="flex: 1; text-align: right; margin-right: 90px;">
@@ -482,7 +484,7 @@
 	</div>
 	</div>
 </main>
-@endsection
+
 <script>
 	// Fungsi untuk menghapus kelas active dari semua elemen nav-link
 	function removeActiveClass() {
@@ -520,30 +522,56 @@
 	        }
 	    }
 	}
-	
-	document.addEventListener('DOMContentLoaded', function () {
-	        // Ambil elemen input file dan tombol untuk mengubah gambar
-	        const imageInput = document.getElementById('imageInput');
-	        const changeImageButton = document.getElementById('changeImageButton');
-	        
-	        // Tambahkan event listener untuk mengubah gambar saat input file berubah
-	        imageInput.addEventListener('change', function () {
-	            const file = imageInput.files[0];
-	            if (file) {
-	                const reader = new FileReader();
-	                reader.onload = function (e) {
-	                    document.getElementById('profileImage').src = e.target.result;
-	                };
-	                reader.readAsDataURL(file);
-	            }
-	        });
-	        
-	        // Tambahkan event listener untuk memicu klik pada input file saat ikon pensil diklik
-	        changeImageButton.addEventListener('click', function () {
-	            imageInput.click();
-	        });
-	});
-	
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Ambil elemen input file dan tombol untuk mengubah gambar
+        const imageInput = document.getElementById('imageInput');
+        const changeImageButton = document.getElementById('changeImageButton');
+        const profileImage = document.getElementById('profileImage');
+
+        // Tambahkan event listener untuk mengubah gambar saat input file berubah
+        imageInput.addEventListener('change', function () {
+            const file = imageInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profileImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+
+                // Kirim file ke server melalui AJAX
+                const formData = new FormData();
+                formData.append('image', file);
+
+                fetch('{{ route('updateProfile') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Image uploaded successfully');
+                    } else {
+                        console.error('Image upload failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+
+        // Tambahkan event listener untuk memicu klik pada input file saat ikon pensil diklik
+        changeImageButton.addEventListener('click', function () {
+            imageInput.click();
+        });
+    });
+
+
+
 	function saveGender() {
 	        var selectedGender = document.getElementById('genderSelect').value;
 	        document.getElementById('selectedGender').textContent = selectedGender;
@@ -572,13 +600,10 @@
 	}
 	
 	function saveName() {
-	    // Dapatkan nilai dari input nama
 	    var newName = document.getElementById('nameInput').value;
 	
-	    // Simpan nama baru ke dalam elemen span yang menampilkan nama
 	    document.getElementById('userName').textContent = newName;
 	
-	    // Tutup modal setelah menyimpan perubahan
 	    var nameModal = new bootstrap.Modal(document.getElementById('nameModal'));
 	    nameModal.hide();
 	}
@@ -631,3 +656,4 @@
 	})
 	
 </script>>
+@endsection

@@ -20,6 +20,11 @@ return new class extends Migration
             $table->boolean('role')->default(false);
             $table->boolean('is_active')->default(false);
             $table->string('email')->unique();
+            $table->enum('gender', ['Male', 'Female', 'Other', 'not_specified'])->default('not_specified');
+            $table->enum('interest', ['Business', 'Finance', 'Self Development', 'Other'])->default('Other');
+            $table->string('phone_number')->default('Add Phone Number');
+            $table->date('date_of_birth')->default('2001-01-01');
+            $table->string('location')->default('Add Location');
             $table->timestamp('email_verified_at');
             $table->string('password')->nullable();
             $table->string('otp')->nullable();
