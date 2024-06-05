@@ -1,0 +1,351 @@
+/* Gaya CSS tambahan */
+.nav-item:hover .nav-link {
+  text-decoration: underline;
+}
+
+.profile-info {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.nav-item .profile:hover .profile-info {
+  display: block;
+}
+
+.profile-info a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.profile-info a:hover {
+  text-decoration: underline;
+}
+.profile-info p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.icon.user.outline {
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+.navbar-bawah .nav-item .nav-link.active {
+  text-decoration: underline;
+  color: #13005a !important;
+}
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  color: #fff;
+  height: 100vh; /* Mengatur tinggi hero section menjadi tinggi layar */
+}
+
+.bg-overlay {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.4
+  ); /* Menambahkan latar belakang transparan */
+  border-radius: 10px; /* Menambahkan radius border */
+  backdrop-filter: blur(10px); /* Menambahkan blur pada latar belakang */
+  padding: 20px; /* Menyesuaikan padding untuk versi desktop */
+}
+
+.bg-overlay h1,
+.bg-overlay p {
+  color: #fff; /* Mengatur warna teks menjadi putih */
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 10px 50px;
+  border-radius: 25px;
+}
+
+.btn-primary {
+  background-color: #3eabd9;
+  border-color: #3eabd9;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: #3eabd9;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+#countdown {
+  margin-top: 45px;
+  color: #3eabd9;
+}
+
+#countdown span {
+  font-size: 45px;
+}
+
+#countdown div {
+  font-size: 15px;
+  margin-left: 25px;
+}
+
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Atur tinggi card */
+  border-radius: 8px;
+  width: 18rem; /* Lebar default card */
+}
+
+.card-img-container {
+  height: 100%; /* Sesuaikan tinggi gambar */
+  overflow: hidden;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.custom-card img {
+  object-fit: cover; /* Atur bagaimana gambar diatur di dalam card */
+  width: 100%;
+  height: 150px; /* Atur tinggi gambar */
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-text {
+  flex-grow: 1;
+}
+
+.badge-custom {
+  position: absolute;
+  top: 10px; /* Sesuaikan dengan posisi yang diinginkan */
+  right: 10px; /* Sesuaikan dengan posisi yang diinginkan */
+  z-index: 1; /* Pastikan badge tampil di atas gambar */
+  background-color: #13005a;
+}
+
+.badge-secondary {
+  background-color: #13005a;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  height: 300px; /* Adjust height as needed */
+  position: relative;
+}
+
+.banner .image-container {
+  flex: 1;
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: 20%;
+  
+}
+
+.banner .text {
+  flex: 1;
+  background-color: #3eabd9; /* Bootstrap primary blue */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 38px;
+  position: relative;
+}
+
+.banner .text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px; /* Adjust as needed for blur effect */
+  width: 40px; /* Adjust width for blur effect */
+  height: 100%;
+  background: linear-gradient(to right, #3eabd9, transparent);
+  filter: blur(10px); /* Adjust blur intensity */
+  z-index: -1;
+}
+
+.partner-img {
+  max-height: 80px;
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.partner-col {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+/* Media query untuk layar kecil */
+@media (max-width: 767px) {
+  .col-sm-6 {
+    flex: 0 0 25%;
+    max-width: 50%;
+    padding: 5px; /* Menambahkan jarak antar card */
+  }
+
+  .custom-card {
+    width: 9rem; /* Lebar card di layar kecil */
+    height: 80%; /* Atur tinggi card */
+  }
+
+  .card-img-container {
+    height: 120px; /* Sesuaikan tinggi gambar di mobile */
+  }
+
+  .card-body {
+    padding: 10px; /* Mengurangi padding di dalam card */
+  }
+
+  .card-title {
+    font-size: 10px; /* Mengurangi ukuran font judul */
+  }
+
+  .card-text {
+    font-size: 8px; /* Mengurangi ukuran font deskripsi */
+  }
+
+  .location-icon {
+    font-size: 7px; /* Ukuran font ikon lokasi di layar kecil */
+  }
+
+  .location-text {
+    font-size: 7px; /* Ukuran font teks lokasi di layar kecil */
+  }
+  .badge-secondary {
+    font-size: 7px;
+  }
+
+  .badge-custom {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    padding: 70px 0;
+  }
+
+  .bg-overlay {
+    margin-top: 5px;
+    padding: 5px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .bg-overlay {
+    backdrop-filter: blur(8px); /* Mengurangi blur pada versi tablet */
+  }
+
+  .btn {
+    font-size: 0.875rem;
+    padding: 5px 20px;
+    margin-bottom: 2px;
+    margin-top: 5px;
+  }
+
+  #countdown {
+    margin-top: 5px; /* Atur jarak atas countdown di tampilan mobile */
+  }
+
+  #countdown span {
+    font-size: 15px;
+  }
+
+  #countdown div {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 0;
+  }
+
+  .bg-overlay {
+    margin-top: 37px;
+    padding: 4px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.8rem;
+    margin-top: 2px;
+  }
+  .btn {
+    font-size: 0.875rem;
+    padding: 5px 20px;
+    margin-bottom: 2px;
+    margin-top: 5px;
+  }
+
+  #countdown {
+    margin-top: 5px; /* Atur jarak atas countdown di tampilan mobile */
+  }
+
+  #countdown span {
+    font-size: 15px;
+  }
+
+  #countdown div {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+}

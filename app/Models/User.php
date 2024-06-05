@@ -59,6 +59,15 @@ class User extends Authenticatable
         return $this->hasMany(Post::class, 'creator_id');
     }
 
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'creator_id');
+    }
+    public function joinedEvents()
+    {
+        return $this->belongsToMany(Event::class, 'event_user');
+    }
+    
     // Relasi ke model LikesPost
     public function likes()
     {
@@ -70,4 +79,35 @@ class User extends Authenticatable
     {
         return $this->hasMany(Bookmark::class);
     }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'follower_id');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'followed_id');
+    }
+
+    public function isFollowing($userId)
+    {
+        return $this->following()->where('followed_id', $userId)->exists();
+    }
+    public function totalLikes()
+    {
+        return $this->posts()->withCount('likes')->get()->sum('likes_count');
+    }
+
+    public function communities()
+    {
+        return $this->belongsToMany(Community::class, 'community_user')->withPivot('role')->withTimestamps();
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+
 }

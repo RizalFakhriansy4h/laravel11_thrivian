@@ -72,4 +72,34 @@ function toggleIcon(event, outlineId, solidId, countId) {
     event.preventDefault();
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var toggleButton = document.getElementById('toggleSearch');
+    var searchInput = document.getElementById('searchInput');
+  
+    toggleButton.addEventListener('click', function() {
+      var isVisible = searchInput.style.display === 'block';
+      searchInput.style.display = isVisible ? 'none' : 'block';
+  
+      if (!isVisible) {
+        searchInput.focus(); // Focus on the input when shown
+      }
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+  const posts = document.querySelectorAll('.post');
+  posts.forEach(post => {
+      post.querySelector('.full-post').addEventListener('click', function() {
+          posts.forEach(p => p.classList.remove('active-post', 'inactive-post'));
+          post.classList.add('active-post');
+          posts.forEach(p => {
+              if (p !== post) p.classList.add('inactive-post');
+          });
+          const truncated = post.querySelector('.truncated');
+          const fullContent = post.querySelector('.full-content');
+          truncated.classList.add('d-none');
+          fullContent.classList.remove('d-none');
+      });
+  });
+});
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css">
-
+    <link rel="icon" type="image/png" href="/assets/img/logo.png">
     <title>@yield('title')</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
@@ -59,7 +59,7 @@
             <nav class="navbar navbar-light bg-light fixed-top">
                 <div class="container d-flex justify-content-center"> <!-- Menggunakan flexbox untuk pengaturan posisi -->
                     <a class="navbar-brand" href="{{ route('intro') }}">
-                        <img src="/assets/img/Thrivian.org.png" alt="" width="180" height="40" style="display: block; margin: 0 auto;">
+                        <img src="/assets/img/thrivan-logo.png" alt="" width="180" height="40" style="display: block; margin: 0 auto;">
                     </a>
                 </div>
             </nav>

@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Mail\OtpMail;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use function Laravel\Prompts\alert;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
-
-use function Laravel\Prompts\alert;
 
 class AuthController extends Controller
 {
@@ -67,7 +68,7 @@ class AuthController extends Controller
         // Buat pengguna baru
         $user = User::create([
             'name' => $request->input('name'),
-            'username' => $request->input('username'),
+            'username' => Str::slug($request->input('username')),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
         ]);
@@ -117,7 +118,7 @@ class AuthController extends Controller
 
 
             $user->name = $googleName;
-            $user->username = $googleName . '.google';
+            $user->username = Str::slug($googleName) . '.google';
             $user->email = $googleUser->email;
             $user->avatar = $googleUser->avatar;
             $user->password = bcrypt('random_password');

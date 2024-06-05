@@ -20,23 +20,54 @@ class UserSeeder extends Seeder
             'is_active' => true,
         ]);
 
-        // Tambahkan data pengguna biasa
         User::create([
-            'name' => 'user1',
-            'username' => 'user1',
-            'email' => 'user1@gmail.com',
-            'password' => Hash::make('user1'),
+            'name' => 'John Doe',
+            'username' => 'johndoe',
+            'email' => 'john.doe@example.com',
+            'avatar' => '/storage/avatar/profile1.jpg',
+            'password' => Hash::make('password1'),
             'role' => false,
             'is_active' => true,
         ]);
 
-        // Tambahkan data pengguna tambahan
         User::create([
-            'name' => 'user2',
-            'username' => 'user2',
-            'email' => 'user2@gmail.com',
-            'password' => Hash::make('user2'),
+            'name' => 'Jane Smith',
+            'username' => 'janesmith',
+            'email' => 'jane.smith@example.com',
+            'avatar' => '/storage/avatar/profile5.jpg',
+            'password' => Hash::make('password2'),
             'role' => false,
+            'is_active' => true,
+        ]);
+
+        User::create([
+            'name' => 'Michael Johnson',
+            'username' => 'michaeljohnson',
+            'email' => 'michael.johnson@example.com',
+            'avatar' => '/storage/avatar/profile2.jpg',
+            'password' => Hash::make('password3'),
+            'role' => false,
+            'is_active' => true,
+        ]);
+
+        User::create([
+            'name' => 'Emily Davis',
+            'username' => 'emilydavis',
+            'email' => 'emily.davis@example.com',
+            'avatar' => '/storage/avatar/profile3.jpg',
+            'password' => Hash::make('password4'),
+            'role' => false,
+            'is_active' => true,
+        ]);
+
+        User::create([
+            'name' => 'William Brown',
+            'username' => 'williambrown',
+            'email' => 'william.brown@example.com',
+            'avatar' => '/storage/avatar/profile4.jpg',
+            'password' => Hash::make('password5'),
+            'role' => false,
+            'is_active' => true,
         ]);
 
     }

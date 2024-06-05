@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/img/logo.png">
     <title>Introduction Thrivian</title>
     <style>
         .nav-item:hover .nav-link {
@@ -64,14 +65,14 @@
             padding: 5rem 0;
         }
         #banner3 {
-            background-color: #3EABD9;
+            background-color: #13005A;
             color: white;
         }
         #banner3 .text-content {
             padding-left: 7rem;
         }
         #register-section {
-            background-color: #3EABD9;
+            background-color: #13005A;
             color: white;
             text-align: center;
         }
@@ -140,8 +141,8 @@
     <header>
         <nav class="navbar navbar-light bg-light fixed-top">
             <div class="container d-flex justify-content-center"> 
-                <a class="navbar-brand" href="{{ route('intro') }}">
-                    <img src="/assets/img/Thrivian.org.png" alt="" width="180" height="40" style="display: block; margin: 0 auto;">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="/assets/img/thrivan-logo.png" alt="" width="180" height="40" style="display: block; margin: 0 auto;">
                 </a>
             </div>
         </nav>
@@ -150,17 +151,14 @@
     <div class="container-fluid p-0">
         <section id="banner-home">
             <div class="banner-content">
-                <h1 class="text-dark fw-600 mb-4" style="font-size: 48px">Selamat Datang di Thrivian!</h1>
-                <p class="pa-5 text-dark fw-500 mb-5">Bukan Sekedar Komunitas biasa, Ini tempat yang Mendukung Mimpi dan Mendorongmu Maju,
+                <h1 class="text-light fw-600 mb-4" style="font-size: 48px">Selamat Datang di Thrivian!</h1>
+                <p class="pa-5 text-light fw-500 mb-5">Bukan Sekedar Komunitas biasa, Ini tempat yang Mendukung Mimpi dan Mendorongmu Maju,
                     Dapatkan Dukungan dan Motivasi yang Tak Terbatas dalam Perjalananmu Mencapai Tujuan
                     Mari terhubung dan temukan lebih banyak hal yang menginspirasi di dunia sosial, bisnis, kesehatan, pendidikan, teknologi dan masih banyak lagi.
                 </p>
                 <div class="d-flex flex-column flex-md-row justify-content-center">
-                    <a href="#" class="button mb-2 mb-md-0 px-3 py-3 me-md-4" style="border-radius: 15px; border: 2px solid black; background-color: transparent; color: black;">
-                        <span><i class="bi bi-download me-1"></i></span> Download for Mobile
-                    </a>
-                    <a href="{{ route('login') }}" class="button px-3 py-3" style="border-radius: 15px; border: 2px solid black; background-color: #13005A; color: #fff;">
-                        Log In with your Browser
+                    <a href="{{ route('login') }}" class="button px-5 py-3 rounded-pill" style=" background-color: #fff; color: #13005A;">
+                        Sign Up Now !
                     </a>
                 </div>
             </div>
@@ -212,7 +210,7 @@
                     <div class="col text-content text-center">
                         <h2 class="fw-bold mb-5">Belum bergabung dengan Thrivian?</h2>
                         <p class="mb-5">Jangan lewatkan kesempatan untuk terhubung dengan ribuan orang yang memiliki minat dan tujuan serupa. Daftar sekarang dan mulai <br>petualangan baru Anda bersama kami!</p>
-                        <a href="{{ route('register') }}" class="button px-5 py-3" style="border-radius: 15px; border: 2px solid black; background-color: #13005A; color: #fff;">
+                        <a href="{{ route('login') }}" class="button px-5 py-3 fw-100" style="border-radius: 20px; border: 2px solid black; background-color: #B0C0D6; color: black;">
                             Daftar Sekarang!
                         </a>
                     </div>
@@ -225,7 +223,7 @@
         <div class="container">
             <div class="row text-center text-md-start">
                 <div class="col-md-12 d-flex justify-content-center justify-content-md-start align-items-center mb-3">
-                    <img src="/assets/img/Thrivian.org.png" alt="logo-thrivian" class="footer-logo">
+                    <img src="/assets/img/thrivan-logo.png" alt="logo-thrivian" class="footer-logo">
                 </div>
                 <hr class="mt-3" style="border-top: 3px solid #E5E5E5;">
                 <div class="col-md-3 footer-col">

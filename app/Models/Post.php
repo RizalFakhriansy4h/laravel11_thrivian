@@ -17,12 +17,18 @@ class Post extends Model
         'content',
         'category',
         'likes_count',
-        'comment_count'
+        'comment_count',
+        'community_id',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function community()
+    {
+        return $this->belongsTo(Community::class, 'community_id');
     }
 
     public function likes()
@@ -39,6 +45,12 @@ class Post extends Model
     {
         return $this->hasMany(Bookmark::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     
 
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Community;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\Community;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,7 +33,7 @@ class AdminController extends Controller
         $this->data['title'] = 'Admin';
         $this->data['title_table'] = 'Community';
         $this->data['admins'] = User::where('role', 1)->get();
-        $this->data['Communities'] = Community::all();
+        $this->data['communities'] = Community::all();
         
         return view('admin.community',$this->data);
     }
@@ -42,7 +43,7 @@ class AdminController extends Controller
         $this->data['title'] = 'Admin';
         $this->data['title_table'] = 'Event';
         $this->data['admins'] = User::where('role', 1)->get();
-        // $this->data['Events'] = Event::all();
+        $this->data['events'] = Event::all();
         
         return view('admin.event',$this->data);
     }
@@ -51,8 +52,17 @@ class AdminController extends Controller
     {
         $this->data['title'] = 'Admin';
         $this->data['title_table'] = 'User';
-        $this->data['users'] = User::where('role', 0)->get();
+        $this->data['users'] = User::where('role', 0)->where('is_active', 1)->get();
         
         return view('admin.user',$this->data);
+    }
+
+    public function makeAdmin($id)
+    {
+        $user = User::findOrFail($id);
+        $user->role = 1; // Set role to admin
+        $user->save();
+
+        return redirect()->route('tableUser')->with('success', 'User has been made admin.');
     }
 }

@@ -11,10 +11,10 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('category');
+            $table->string('category')->nullable();
             $table->string('slug')->unique();
             $table->foreignId('creator_id')->constrained('users');
-            $table->text('thumbnail')->nullable(); // Text atau JSON, tergantung kebutuhan
+            $table->text('thumbnail')->nullable();
             $table->longText('content');
             $table->unsignedBigInteger('likes_count')->default(0);
             $table->unsignedBigInteger('comment_count')->default(0);

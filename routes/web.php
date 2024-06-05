@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\CommunityController;
 
 // sudah login
@@ -16,36 +17,79 @@ Route::middleware(['auth'])->group(function () {
     })->name('after.login');
 
     Route::get('/profile', [MainController::class, 'setViewprofile'])->name('profile');
+    Route::get('/profile/{username}', [MainController::class, 'setViewProfileByUsername'])->name('profile.people');
 
     Route::get('/settings', [MainController::class, 'setViewsettings'])->name('settings');
     
     Route::get('/home', [MainController::class, 'setViewhome'])->name('home');
     
     Route::get('/community', [MainController::class, 'setViewCommunity'])->name('community');
-
+    Route::get('/community/{slug}', [CommunityController::class, 'detail'])->name('community.detail');
+    
+    Route::get('/homeevent', [MainController::class, 'setViewHomeEvent'])->name('homeEvent');
+    Route::get('/event', [MainController::class, 'setViewEvent'])->name('event');
+    Route::get('/event/{slug}', [EventController::class, 'detail'])->name('event.detail');
+    
     Route::post('/update-profile', [MainController::class, 'updateProfile'])->name('updateProfile');
     Route::post('/update-password', [MainController::class, 'updatePassword'])->name('password.update');
-
-
-
+    
+    
+    Route::get('/addpost', [PostController::class, 'setViewPost'])->name('viewpost');
+    
     Route::post('/post', [PostController::class, 'uploadPost'])->name('uploadPost');
+    Route::get('/post/{slug}', [PostController::class, 'detail'])->name('post.detail');
+    Route::post('/comments', [PostController::class, 'store'])->name('comments.store');
+
+
     Route::post('/like-post', [PostController::class, 'likePost'])->name('like.post');
     Route::post('/bookmark-post', [PostController::class, 'bookmarkPost'])->name('bookmark.post');
-
-
-    Route::post('/communities', [CommunityController::class, 'requestCommunity'])->name('requestCommunity');
-
-
-
-
+    
+    
+    Route::get('/addcommunity', [CommunityController::class, 'setViewCommunity'])->name('viewcommunity');
+    
+    Route::post('/requestcommunity', [CommunityController::class, 'requestCommunity'])->name('requestCommunity');
+    
+    Route::post('/event/join', [EventController::class, 'joinEvent'])->name('event.join');
+    
+    Route::post('/follow/{user}', [MainController::class, 'follow'])->name('follow');
+    Route::post('/unfollow/{user}', [MainController::class, 'unfollow'])->name('unfollow');
+    
+    Route::post('/community/join', [CommunityController::class, 'joinCommunity'])->name('community.join');
+    Route::post('/community/leave', [CommunityController::class, 'leaveCommunity'])->name('community.leave');
+    
+    Route::group(['middleware' => ['auth', 'isAdminCommunity']], function() {
+        
+        
+    });
+    
+    Route::middleware(['auth', 'isMemberCommunity'])->group(function () {
+        
+        Route::get('/community/{slug}/addevent', [CommunityController::class, 'addEventToCommunity'])->name('community.addevent');
+        Route::post('/requestevent', [EventController::class, 'requestEvent'])->name('requestEvent');
+        
+        Route::get('/community/{slug}/addpost', [CommunityController::class, 'postToCommunity'])->name('community.post');
+        Route::post('/community/{slug}/addpost', [CommunityController::class, 'storePostToCommunity'])->name('community.post.store');
+        
+    });
+    
+    
+    
+    
     
     // login dan rolenya sebagai admin
     Route::middleware(['adminCheck'])->group(function (){
         Route::get('/admin/community', [AdminController::class, 'setViewTableCommunity'])->name('tableCommunity');
         Route::get('/admin/event', [AdminController::class, 'setViewTableEvent'])->name('tableEvent');
         Route::get('/admin/user', [AdminController::class, 'setViewTableUser'])->name('tableUser');
+        
+        Route::get('/addevent', [EventController::class, 'setViewEvent'])->name('viewevent');
+        Route::post('/requestevent', [EventController::class, 'requestEvent'])->name('requestEvent');
 
         Route::post('/community/accept', [CommunityController::class, 'acceptCommunity'])->name('acceptCommunity');
+        
+        Route::post('/event/accept', [EventController::class, 'acceptEvent'])->name('acceptEvent');
+
+        Route::post('/make-admin/{id}', [AdminController::class, 'makeAdmin'])->name('makeAdmin');
 
 
 

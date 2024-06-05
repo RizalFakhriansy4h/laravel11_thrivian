@@ -15,6 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth' => \App\Http\Middleware\AuthenticateMiddleware::class,
             'guest' => \App\Http\Middleware\GuestMiddleware::class,
             'adminCheck' => \App\Http\Middleware\AdminCheck::class,
+            'isAdminCommunity' => \App\Http\Middleware\IsAdminCommunity::class,
+            'isMemberCommunity' => \App\Http\Middleware\IsMemberCommunity::class,
 
         ]);
     })

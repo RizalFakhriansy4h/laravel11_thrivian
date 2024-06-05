@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Comment;
 use App\Models\Bookmark;
+use App\Models\Community;
 use App\Models\LikesPost;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -28,6 +31,15 @@ class PostController extends Controller
             'created_at' => $user->created_at,
         ];
     }
+
+    public function setViewPost()
+    {
+        $this->data['title'] = 'Add Post';
+        $this->data['admins'] = User::where('role', 1)->get();
+
+        return view('main.add_post', $this->data);
+    }
+    
 
     public function uploadPost(Request $request)
     {
@@ -70,7 +82,7 @@ class PostController extends Controller
 
         $postData->save();
 
-        return redirect()->back()->with('success', 'Post uploaded successfully!');
+        return redirect(route('home'))->with('success', 'Post uploaded successfully!');
 
     }
 
@@ -132,6 +144,41 @@ class PostController extends Controller
             'bookmarked' => $bookmarked,
             'bookmarkCount' => $bookmarkCount
         ]);
+    }
+
+    public function detail($slug)
+    {
+        $post = Post::where('slug', $slug)->with(['comments.user', 'user'])->firstOrFail();
+
+        $userId = Auth::id();
+
+        $myCommunityIds = Community::whereHas('members', function($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->where('is_active', 1)->pluck('id');
+
+        $this->data['post'] = $post;
+        $this->data['title'] = 'Post ' . $post->title;
+
+        $this->data['allMyCommunities'] = Community::whereIn('id', $myCommunityIds)->where('is_active', 1)->get();
+        $this->data['allMyEvents'] = Auth::user()->joinedEvents;
+
+        return view('main.post_detail', $this->data);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'post_id' => 'required|exists:posts,id',
+            'content' => 'required|string|max:255',
+        ]);
+
+        Comment::create([
+            'post_id' => $request->post_id,
+            'user_id' => auth()->id(),
+            'content' => $request->content,
+        ]);
+
+        return redirect()->back()->with('success', 'Comment added successfully.');
     }
 
     

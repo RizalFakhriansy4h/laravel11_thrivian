@@ -24,16 +24,16 @@
 								<div class="user-stats">
 									<div class="d-flex justify-content-center fs-5" style="margin-top: 40px;">
 										<div style="padding: 0 20px; border-right: 3px solid black;">
-											<div class="mb-4">270</div>
+											<div class="mb-4">{{ Auth::user()->followers()->count() }}</div>
 											<div>Followers</div>
 										</div>
 										<div style="padding: 0 20px; border-right: 3px solid black;">
-											<div class="mb-4">40</div>
+											<div class="mb-4">{{ Auth::user()->following()->count() }}</div>
 											<div>Following</div>
 										</div>
 										<div style="padding: 0 20px;">
-											<div class="mb-4">3</div>
-											<div>Communities</div>
+											<div class="mb-4">{{ Auth::user()->totalLikes() }}</div>
+											<div>Likes</div>
 										</div>
 									</div>
 								</div>
@@ -44,30 +44,23 @@
 				</div>
 				<div class="mt-3">
 					<h6 style="color: #13005A;">My Communities</h6>
-					<div class="d-flex align-items-center mt-2">
-						<div class="rounded-circle overflow-hidden" style="width: 30px; height: 30px; background-color: #f0f0f0;">
-							<img src="/assets/img/business.jpg" alt="Community Image" style="width: 100%; height: 100%; object-fit: cover;">
+					@if ($allMyCommunities->isNotEmpty())
+						@foreach ($allMyCommunities as $myCommunity)
+							<div class="d-flex align-items-center mt-2">
+								<div class="rounded-circle overflow-hidden" style="width: 30px; height: 30px; background-color: #f0f0f0;">
+									<img src="{{ $myCommunity->thumbnail }}" alt="Community Image" style="width: 100%; height: 100%; object-fit: cover;">
+								</div>
+								<a href="{{ route('community.detail', ['slug' => $myCommunity->slug]) }}" class="ms-2 text-decoration-none" style="color: black;">{{ $myCommunity->name }}</a>
+							</div>
+						@endforeach
+					@else
+					<div class="alert alert-warning d-flex align-items-center mt-2" role="alert" style="width: 100%;">
+						<div style="flex: 1;">
+							<span>You're not yet joined any community.</span>
 						</div>
-						<a href="link_ke_halaman_komunitas_1" class="ms-2 text-decoration-none" style="color: black;">Business</a>
+						<a href="{{ route('community') }}" class="btn btn-outline-light" style="border-color: #13005A; color: #13005A; margin-left: 10px;">Go find some Community</a>
 					</div>
-					<div class="d-flex align-items-center mt-2">
-						<div class="rounded-circle overflow-hidden" style="width: 30px; height: 30px; background-color: #f0f0f0;">
-							<img src="/assets/img/finance.jpg" alt="Community Image" style="width: 100%; height: 100%; object-fit: cover;">
-						</div>
-						<a href="link_ke_halaman_komunitas_2" class="ms-2 text-decoration-none" style="color: black;">Personal Development</a>
-					</div>
-					<div class="d-flex align-items-center mt-2">
-						<div class="rounded-circle overflow-hidden" style="width: 30px; height: 30px; background-color: #f0f0f0;">
-							<img src="/assets/img/self-development.jpg" alt="Community Image" style="width: 100%; height: 100%; object-fit: cover;">
-						</div>
-						<a href="link_ke_halaman_komunitas_2" class="ms-2 text-decoration-none" style="color: black;">Finance</a>
-					</div>
-					<div class="d-flex justify-content-center align-items-center mt-2 mb-5">
-						<a href="#" class="text-decoration-none" style="color: #13005A;">
-						<i class="angle down icon"></i>
-						See All
-						</a>
-					</div>
+					@endif
 				</div>
 			</div>
 		</div>
@@ -84,9 +77,6 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-secondary" href="#" style="margin-right: 9px; margin-left: 9px;" onclick="showPosts('Saves')">Saves</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-secondary" href="#" style="margin-right: 9px; margin-left: 9px;" onclick="showPosts('Events')">Events</a>
 						</li>
 					</ul>
 					<hr class="mt-1" style="border-top: 3px solid #E5E5E5;">
@@ -111,7 +101,7 @@
 						<div class="row mb-0 ms-5">
 							<div class="col">
 								@if ( $mypost->thumbnail )
-								<img src="{{ $mypost->thumbnail }}" class="img-fluid " style="border-radius: 15px;" alt="Image">								
+								<img src="{{ $mypost->thumbnail }}" class="img-fluid w-25" style="border-radius: 15px;" alt="Image">								
 								@endif
 								<p class="mb-0 mt-1" style="text-align: justify;">{{ $mypost->content }}</p>
 							</div>
@@ -225,7 +215,7 @@
 						<div class="row mb-0 ms-5">
 							<div class="col">
 								@if ($likepost->post->thumbnail)
-								<img src="{{ $likepost->post->thumbnail }}" class="img-fluid" style="border-radius: 15px; width: 100%; height: 100%;" alt="Image">
+								<img src="{{ $likepost->post->thumbnail }}" class="img-fluid w-25" style="border-radius: 15px; width: 100%; height: 100%;" alt="Image">
 								@endif
 								<p class="mb-0">{{ $likepost->post->content }}</p>
 							</div>
@@ -339,7 +329,7 @@
 						<div class="row mb-0 ms-5">
 							<div class="col">
 								@if ($savepost->post->thumbnail)
-								<img src="{{ $savepost->post->thumbnail }}" class="img-fluid" style="border-radius: 15px; width: 100%; height: 100%;" alt="Image">
+								<img src="{{ $savepost->post->thumbnail }}" class="img-fluid w-25" style="border-radius: 15px; width: 100%; height: 100%;" alt="Image">
 								@endif
 								<p class="mb-0">{{ $savepost->post->content }}</p>
 							</div>
