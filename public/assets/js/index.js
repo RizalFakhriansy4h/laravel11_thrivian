@@ -16,21 +16,16 @@ function showPosts(category) {
         }
     }
 
-   // Reset background colors and text colors for all badges
-document.getElementById('allBtn').classList.remove('active', 'bg-secondary', 'text-light');
-document.getElementById('allBtn').classList.add('bg-light', 'text-dark');
-document.getElementById('businessBtn').classList.remove('active', 'bg-secondary', 'text-light');
-document.getElementById('businessBtn').classList.add('bg-light', 'text-dark');
-document.getElementById('financeBtn').classList.remove('active', 'bg-secondary', 'text-light');
-document.getElementById('financeBtn').classList.add('bg-light', 'text-dark');
+    // Reset classes for all badges
+    document.querySelectorAll('.badge-post').forEach(function(btn) {
+        btn.classList.remove('active', 'bg-secondary', 'text-light');
+        btn.classList.add('bg-light', 'text-dark');
+    });
 
-// Set background color and text color for clicked button
-var btn = document.getElementById(category.toLowerCase() + 'Btn');
-btn.classList.add('active');
-btn.classList.remove('bg-light', 'text-dark');
-btn.style.backgroundColor = '#13005A'; // Set your desired background color here
-btn.classList.add('text-light');
-
+    // Set active class for clicked button
+    var btn = document.getElementById(category.toLowerCase().replace(/\s/g, '') + 'Btn');
+    btn.classList.add('active');
+    btn.classList.remove('bg-light', 'text-dark');
 }
 
 document.addEventListener('DOMContentLoaded', function() {

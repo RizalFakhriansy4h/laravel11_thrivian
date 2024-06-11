@@ -430,7 +430,6 @@
 	</div>
 </main>
 <script>
-	// Fungsi untuk menghapus kelas active dari semua elemen nav-link
 	function removeActiveClass() {
 	    var navLinks = document.querySelectorAll('.nav-link');
 	    navLinks.forEach(function(link) {
@@ -438,19 +437,16 @@
 	    });
 	}
 	
-	// Fungsi untuk menambahkan kelas active ke teks yang diklik
 	function setActiveLink(link) {
-	    removeActiveClass(); // Hapus kelas active dari semua elemen nav-link
-	    link.classList.add('active'); // Tambahkan kelas active ke teks yang diklik
+	    removeActiveClass();
+	    link.classList.add('active');
 	}
 	
-	// Ambil semua elemen anchor dengan kelas nav-link
 	var navLinks = document.querySelectorAll('.nav-link');
 	
-	// Tambahkan event listener ke setiap elemen anchor
 	navLinks.forEach(function(link) {
 	    link.addEventListener('click', function() {
-	        setActiveLink(link); // Ketika teks navigasi diklik, atur teks yang diklik sebagai aktif
+	        setActiveLink(link);
 	    });
 	});
 	

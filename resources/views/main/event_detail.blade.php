@@ -107,6 +107,7 @@
 		}
 	</style>
 </head>
+
 <main>
 	<section class="banner-section">
 		<div class="banner-content">
@@ -114,7 +115,7 @@
 				<img src="{{ $event->thumbnail }}" alt="Expo Image" class="event-image">
 			</div>
 			<div class="text-content" style="padding-left: 10%;">
-				<h1>Smart Business Expo</h1>
+				<h1>{{ $event->name }}</h1>
 				<div class="details-row">
 					<div>
 						<i class="bi bi-calendar-event"></i>
@@ -149,11 +150,11 @@
 		</div>
 	</section>
 	<section class="container my-5">
-		<h1 class="text-primary">About This Event</h1>
+		<h1 class="text-title" style="color: #fff; background-color: #13005A;">About This Event</h1>
 		<p>{{ $event->description }}</p>
 	</section>
 	<section class="container my-5">
-		<h1 class="text-primary">How To Get Here</h1>
+		<h1 class="text-title" style="color: #fff; background-color: #13005A;">Where We're Located</h1>
 		<div class="row">
 			<div class="col-md-6">
 				<p>This event is located in the heart of Jakarta city, close to all city center facilities, attractions, and easily accessible with a range of travel options.</p>
@@ -165,6 +166,10 @@
 		</div>
 	</section>
 </main>
+
+
+
+
 <!-- Modal -->
 <div class="modal fade" id="memberModal" tabindex="-1" aria-labelledby="memberModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">

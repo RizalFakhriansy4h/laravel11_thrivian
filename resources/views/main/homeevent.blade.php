@@ -45,11 +45,18 @@
 			text-align: right;
 			}
 			.event-card {
-			border: 1px solid #ddd;
-			border-radius: 15px;
-			overflow: hidden;
-			margin-bottom: 15px;
-			padding: 15px;
+				position: relative;
+				border: 1px solid #ddd;
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				margin-top: 5px;
+				transition: transform 0.3 ease-in-out;
+				margin-bottom: 15px;
+				padding: 15px;
+			}
+			.event-card:hover {
+				transform: scale(1.09);
 			}
 			.event-card img {
 			width: 100%;
@@ -59,13 +66,44 @@
 			}
 			.event-date {
 			position: absolute;
-			top: 10px;
 			right: 10px;
-			background-color: rgba(0, 0, 0, 0.7);
-			color: white;
-			padding: 5px 10px;
+			bottom: 110px;
+			background-color: white;
+			color: #13005A;
+			padding: 4px;
 			border-radius: 5px;
 			font-size: 0.9rem;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+			.event-date-content {
+				text-align: center;
+			}
+			.event-date-day {
+				font-size: 1.4em;
+				font-weight: bold;
+				display: block;
+			}
+			.event-date-month {
+				font-size: 0.9em;
+				display: block;
+			}
+			.event-info {
+				padding: 10px;
+				background-color: white;
+			}
+			.event-location {
+				font-size: 0.9em;
+				color: #13005A;
+				margin-bottom: 5px;
+			}
+			.event-title {
+				font-size: 1.2em;
+				font-weight: bold;
+				margin: 0
+			}
+			.event-community {
+				font-size: 0.9em;
+				color: #999;
 			}
 			.event-banner {
 			position: relative;
@@ -293,7 +331,7 @@
 		<div class="event-banner">
 			<div class="event-overlay">
 				<div class="event-content" >
-					<h1 class="mb-4">Find Your Event Event</h1>
+					<h1 class="mb-4">Find Your Event</h1>
 					<p>Lorem ipsum dolor sit amet, consectetur <br>adipiscing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
 					<a href="{{ route('event') }}" class="btn btn-primary px-5 mt-3" style="background-color: #5458E5; border: none;">Find More Event</a>
 				</div>

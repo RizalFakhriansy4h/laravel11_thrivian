@@ -121,11 +121,14 @@ class MainController extends Controller
     {
         $this->data['title'] = 'Community';
         $this->data['admins'] = User::where('role', 1)->get();
+        $userId = Auth::id();
 
         $this->data['commBusiness'] = Community::where([['category', 'Business'],['is_active', '=', 1]])->get();
         $this->data['commFinances'] = Community::where([['category', 'Finance'],['is_active', '=', 1]])->get();
         $this->data['commPersonals'] = Community::where([['category', 'Personal Development'],['is_active', '=', 1]])->get();
-        
+        $myCommunityIds = Community::whereHas('members', function($query) use ($userId) {$query->where('user_id', $userId);})->where('is_active', 1)->pluck('id');
+
+        $this->data['allMyCommunities'] = Community::whereIn('id', $myCommunityIds)->where('is_active', 1)->get();
         
         return view('main.community',$this->data);
     }

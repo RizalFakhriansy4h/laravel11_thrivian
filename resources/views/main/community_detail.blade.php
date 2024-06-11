@@ -79,8 +79,8 @@
 <main class="container-fluid border" style="margin-top: 5%;">
 	<div class="row justify-content-center">
 		<div class="col-md-8 border-end border-start mt-5 mt-md-0 mb-5 mb-md-0">
-			<div class="card mb-2 custom-card">
-				<img src="{{ $community->thumbnail }}" class="card-img-top" alt="Business Club">
+			<div class="card-join mb-2 custom-card">
+				<img src="{{ $community->thumbnail }}" class="card-img-top" alt="{{ $community->name }}">
 				<div class="card-body">
 					<h2 class="card-title" style="color: #13005A;">{{ $community->name }}</h2>
 					<p class="card-text">{{ $community->description }}</p>
@@ -207,28 +207,38 @@
 					@foreach($allMyEvents as $index => $event)
 					@if($index == 0)
 					<!-- start jika looping pertama -->
-					<div class="border-radius mb-2">
-						<img src="{{ $event->thumbnail }}" class="card-img-top img-fluid" alt="{{ $event->name }}" style="width: 474px; height: 262px; object-fit: cover; object-position: center;">
+					<div class="card mb-3" style="border-radius: 15px; overflow: hidden;">
+						<div class="position-relative">
+							<img src="{{ $event->thumbnail }}" class="card-img-top img-fluid" alt="{{ $event->name }}">
+							<div class="date-badge">
+								<span class="badge">
+									<div class="day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</div>
+									<div class="month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</div>
+								</span>
+							</div>
+						</div>
 						<div class="card-body">
-							<h5 class="card-title fs-6"><a href="{{ route('event.detail', ['slug' => $event->slug]) }}" style="text-decoration: none;">{{ $event->name }}</a> <span class="badge rounded-pill badge-custom" style="background-color: #13005A;">{{ \Carbon\Carbon::parse($event->start_date)->format('F jS') }}</span></h5>
+							<h5 class="card-title fs-6"><a href="{{ route('event.detail', ['slug' => $event->slug]) }}" style="text-decoration: none;">{{ $event->name }}</a></h5>
 							<p class="card-text">{{ Str::limit($event->description, 50) }}</p>
 						</div>
 					</div>
 					@else
-					<!-- looping kedua dan seterusnya -->
-					<div class="card-row row align-items-center mb-3">
-						<div class="col-md-2">
-							<img src="{{ $event->thumbnail }}" alt="{{ $event->name }}" class="rounded" style="width: 130px; height: 130px;">
-						</div>
-						<div class="col-md-10 d-flex align-items-start">
-							<div class="card-body" style="margin-left: 77px;">
-								<span class="badge rounded-pill badge-custom mb-2" style="background-color: #13005A;">{{ \Carbon\Carbon::parse($event->start_date)->format('F jS') }}</span>
-								<a href="{{ route('event.detail', ['slug' => $event->slug]) }}">
-									<h6 class="card-title text-sm">{{ Str::limit($event->name, 20) }}</h6>
-								</a>
-								<p class="card-text text-sm">
-									{{ Str::limit($event->description, 25) }}
-								</p>
+					<div class="card mb-3" style="border-radius: 15px; overflow: hidden;">
+						<div class="row g-0">
+							<div class="col-4 position-relative">
+								<img src="{{ $event->thumbnail }}" class="img-fluid rounded-start" alt="{{ $event->name }}">
+								<div class="date-badge">
+									<span class="badge">
+										<div class="day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</div>
+										<div class="month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</div>
+									</span>
+								</div>
+							</div>
+							<div class="col-8">
+								<div class="card-body">
+									<h5 class="card-title fs-6"><a href="{{ route('event.detail', ['slug' => $event->slug]) }}">{{ $event->name }}</a></h5>
+									<p class="card-text">{{ Str::limit($event->description, 25) }}</p>
+								</div>
 							</div>
 						</div>
 					</div>

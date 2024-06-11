@@ -56,6 +56,8 @@ Route::middleware(['auth'])->group(function () {
     
     Route::post('/community/join', [CommunityController::class, 'joinCommunity'])->name('community.join');
     Route::post('/community/leave', [CommunityController::class, 'leaveCommunity'])->name('community.leave');
+
+    Route::post('/requestevent', [EventController::class, 'requestEvent'])->name('requestEvent');
     
     Route::group(['middleware' => ['auth', 'isAdminCommunity']], function() {
         
@@ -65,7 +67,6 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['auth', 'isMemberCommunity'])->group(function () {
         
         Route::get('/community/{slug}/addevent', [CommunityController::class, 'addEventToCommunity'])->name('community.addevent');
-        Route::post('/requestevent', [EventController::class, 'requestEvent'])->name('requestEvent');
         
         Route::get('/community/{slug}/addpost', [CommunityController::class, 'postToCommunity'])->name('community.post');
         Route::post('/community/{slug}/addpost', [CommunityController::class, 'storePostToCommunity'])->name('community.post.store');
@@ -83,7 +84,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/user', [AdminController::class, 'setViewTableUser'])->name('tableUser');
         
         Route::get('/addevent', [EventController::class, 'setViewEvent'])->name('viewevent');
-        Route::post('/requestevent', [EventController::class, 'requestEvent'])->name('requestEvent');
 
         Route::post('/community/accept', [CommunityController::class, 'acceptCommunity'])->name('acceptCommunity');
         
