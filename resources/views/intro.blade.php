@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/assets/img/logo.png">
     <title>Introduction Thrivian</title>
     <style>
         .nav-item:hover .nav-link {
@@ -47,12 +46,29 @@
 .icon.user.outline {
   color: black;
 }
-        #banner-home {
-            position: relative;
-            height: 60vh;
-            width: 100%;
-            background: url('/assets/img/intro-banner.png') no-repeat center center/cover;
-        }
+#banner-home {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    background: url('/assets/img/intro-banner.png') no-repeat center center/cover;
+}
+
+#banner-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Mengatur kegelapan, sesuaikan nilainya */
+    z-index: 1;
+}
+
+#banner-home * {
+    position: relative;
+    z-index: 2;
+}
+
         #banner-home .banner-content {
             position: absolute;
             top: 50%;
@@ -61,21 +77,32 @@
             text-align: center;
             padding: 2rem;
         }
-        #banner2, #banner3, #banner4, #register-section {
-            padding: 5rem 0;
-        }
-        #banner3 {
-            background-color: #13005A;
-            color: white;
-        }
-        #banner3 .text-content {
-            padding-left: 7rem;
+        #banner2 {
+            padding: 4rem 0;
         }
         #register-section {
-            background-color: #13005A;
-            color: white;
-            text-align: center;
-        }
+    position: relative;
+    background: url('/assets/img/intro-banner.png') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+#register-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Adjust opacity to make it darker or lighter */
+    z-index: -1;
+}
+
         #footer {
             background-color: #f8f9fa;
             padding: 2rem 0;
@@ -96,6 +123,7 @@
         #footer .social-icons i {
             font-size: 1.5rem;
             margin-right: 0.5rem;
+            color: #13005A;
         }
         #footer .app-buttons img {
             height: 40px;
@@ -108,10 +136,10 @@
             text-align: center;
         }
         #footer .footer-logo {
-            max-width: 100px;
+            max-width: 200px;
             height: auto;
         }
-        @media (max-width: 767.98px) {
+        @media (max-width: 768px) {
             #banner-home {
                 height: auto;
                 padding: 2rem 0;
@@ -123,6 +151,13 @@
             }
             #banner2 .text-content, #banner3 .text-content, #banner4 .text-content {
                 padding: 0 1rem;
+                display: flex;
+                justify-content: center;
+                
+            }
+            #register-section {
+                height: auto;
+                padding: 4rem 0;
             }
             #footer .footer-bottom {
                 text-align: center;
@@ -133,72 +168,67 @@
             #footer .footer-logo {
                 margin-bottom: 1rem;
             }
+            .container, .container-fluid {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-light bg-light fixed-top mb-4">
             <div class="container d-flex justify-content-center"> 
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{route('intro')}}">
                     <img src="/assets/img/thrivan-logo.png" alt="" width="180" height="40" style="display: block; margin: 0 auto;">
                 </a>
             </div>
         </nav>
     </header>
 
-    <div class="container-fluid p-0">
-        <section id="banner-home">
+    <div class="container-fluid p-0" style="margin-top: 60px;">
+        <section id="banner-home" class="mt-5">
             <div class="banner-content">
-                <h1 class="text-light fw-600 mb-4" style="font-size: 48px">Selamat Datang di Thrivian!</h1>
+                <h4 class="text-light fw-600 mb-4" style="font-size: 28px">Selamat Datang di Thrivian!</h4>
                 <p class="pa-5 text-light fw-500 mb-5">Bukan Sekedar Komunitas biasa, Ini tempat yang Mendukung Mimpi dan Mendorongmu Maju,
                     Dapatkan Dukungan dan Motivasi yang Tak Terbatas dalam Perjalananmu Mencapai Tujuan
                     Mari terhubung dan temukan lebih banyak hal yang menginspirasi di dunia sosial, bisnis, kesehatan, pendidikan, teknologi dan masih banyak lagi.
                 </p>
                 <div class="d-flex flex-column flex-md-row justify-content-center">
-                    <a href="{{ route('login') }}" class="button px-5 py-3 rounded-pill" style=" background-color: #fff; color: #13005A;">
-                        Sign Up Now !
+                    <a href="{{route('login')}}" class="button px-5 py-3 rounded-pill" style=" background-color: #fff; color: #13005A;">
+                       <strong> Sign In Now !</strong>
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="banner2">
+        <section id="banner2" class="d-flex align-items-center justify-content-center text-center">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-content">
-                        <h2 class="fw-bold">Bosan Berkarya Sendirian? <br>Merasa Terjebak dalam Rutinitas?</h2>
-                        <p>Di sini, kamu akan menemukan komunitas yang <br>mengerti kebutuhanmu dan siap mendukungmu dalam <br>mencapai mimpi-mimpimu.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="/assets/img/banner2-introduction.png" alt="Community Image" class="img-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-8" style="color: #13005A;">
+                        <h2 class="fw-bold">Bosan Berkarya Sendirian? Merasa Terjebak dalam Rutinitas?</h2>
+                        <p>Di sini, kamu akan menemukan komunitas yang mengerti kebutuhanmu dan siap mendukungmu dalam mencapai mimpi-mimpimu.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="banner3">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <img src="/assets/img/banner3-introduction.png" alt="Community Image" class="img-fluid">
-                    </div>
-                    <div class="col-md-6 text-content">
-                        <h2 class="fw-bold">Temukan peluang, inspirasi, dan <br>alat yang Anda butuhkan untuk <br>kesuksesan dalam dunia bisnis.</h2>
+        <section id="banner3" class="d-flex">
+            <div class="container-fluid p-0">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <img src="/assets/img/banner-tiga.png" alt="Community Image" class="img-fluid w-100">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="banner4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-content">
-                        <h2 class="fw-bold ms-3">Jalin hubungan baru, dan <br>terlibat dalam komunitas yang <br>peduli dan bersemangat.</h2>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="/assets/img/banner4-introduction.png" alt="Community Image" class="img-fluid">
+        <section id="banner4" class="d-flex">
+            <div class="container-fluid p-0">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <img src="/assets/img/banner-4.png" alt="Community Image" class="img-fluid w-100">
                     </div>
                 </div>
             </div>
@@ -208,10 +238,10 @@
             <div class="container d-flex flex-column align-items-center">
                 <div class="row align-items-center">
                     <div class="col text-content text-center">
-                        <h2 class="fw-bold mb-5">Belum bergabung dengan Thrivian?</h2>
-                        <p class="mb-5">Jangan lewatkan kesempatan untuk terhubung dengan ribuan orang yang memiliki minat dan tujuan serupa. Daftar sekarang dan mulai <br>petualangan baru Anda bersama kami!</p>
-                        <a href="{{ route('login') }}" class="button px-5 py-3 fw-100" style="border-radius: 20px; border: 2px solid black; background-color: #B0C0D6; color: black;">
-                            Daftar Sekarang!
+                        <h2 class="fw-bold">Belum bergabung dengan Thrivian?</h2>
+                        <h3 class="mb-5 fw-normal">Jangan lewatkan kesempatan untuk terhubung dengan ribuan orang yang memiliki minat dan tujuan serupa. Daftar sekarang dan mulai <br>petualangan baru Anda bersama kami!</h3>
+                        <a href="{{route('login')}}" class="button px-5 py-3 rounded-pill" style=" background-color: #fff; color:#13005A;">
+                            <strong>Make Your Journey Now !</strong>
                         </a>
                     </div>
                 </div>
@@ -220,46 +250,39 @@
     </div>
 
     <footer id="footer">
-        <div class="container">
+        <div class="container" style="color: #13005A;">
             <div class="row text-center text-md-start">
                 <div class="col-md-12 d-flex justify-content-center justify-content-md-start align-items-center mb-3">
                     <img src="/assets/img/thrivan-logo.png" alt="logo-thrivian" class="footer-logo">
                 </div>
                 <hr class="mt-3" style="border-top: 3px solid #E5E5E5;">
                 <div class="col-md-3 footer-col">
-                    <h6>Column One</h6>
+                    <h6 class="pb-3">Thrivian.org</h6>
                     <ul>
-                        <li>Twenty One</li>
-                        <li>Thirty Two</li>
-                        <li>Fourty Three</li>
-                        <li>Fifty Four</li>
+                        <li>Tentang Kami</li>
+                        <li>Kontak Kami</li>
+                        <li>Merchandise</li>
+                        <li>Blog</li>
                     </ul>
                 </div>
                 <div class="col-md-3 footer-col">
-                    <h6>Column Two</h6>
+                    <h6 class="pb-3">Layanan Kami</h6>
                     <ul>
-                        <li>Sixty Five</li>
-                        <li>Seventy Six</li>
-                        <li>Eighty Seven</li>
-                        <li>Ninety Eight</li>
+                        <li>Community</li>
+                        <li>Event</li>
+                        <li>E-Learning</li>
+                        <li>Bantuan</li>
                     </ul>
                 </div>
                 <div class="col-md-3 footer-col">
-                    <h6>Column Three</h6>
+                    <h6 class="pb-3">Lainnya</h6>
                     <ul>
-                        <li>One Two</li>
-                        <li>Three Four</li>
-                        <li>Five Six</li>
-                        <li>Seven Eight</li>
+                        <li>Syarat dan Ketentuan</li>
+                        <li>Keijakam Privasi</li>
                     </ul>
                 </div>
                 <div class="col-md-3 footer-col">
-                    <h6 class="mb-3">Column Four</h6>
-                    <div class="app-buttons">
-                        <img src="/assets/img/app-store.png" alt="App Store">
-                        <img src="/assets/img/g-play.png" alt="Google Play">
-                    </div>
-                    <h6 class="py-3">Join Us</h6>
+                    <h6 class="mb-3">Ikuti Kami</h6>
                     <div class="social-icons">
                         <a href="#"><i class="bi bi-youtube"></i></a>
                         <a href="#"><i class="bi bi-facebook"></i></a>
@@ -269,13 +292,8 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center pt-5">
                 <p>Thrivian.org @ 2024. All rights reserved.</p>
-                <p class="p-footer">
-                    <a href="#">Eleven</a> |
-                    <a href="#">Twelve</a> |
-                    <a href="#">Thirteen</a>
-                </p>
             </div>
         </div>
     </footer>

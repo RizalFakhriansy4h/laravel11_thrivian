@@ -8,11 +8,11 @@
 			<i class="fas fa-plus-circle" style="font-size: 15px; color: #13005A;"></i>
 			Create New Post
 			</a>
+			@if ($role == 1)
 			<a href="{{ route('viewcommunity') }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #13005A; color: #13005A;">
 			<i class="fas fa-plus-circle" style="font-size: 15px; color: #13005A;"></i>
 			Create New Community
 			</a>
-			@if ($role == 1)
 			<a href="{{ route('viewevent') }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #13005A; color: #13005A;">
 			<i class="fas fa-plus-circle" style="font-size: 15px; color: #13005A;"></i>
 			Create New Event
