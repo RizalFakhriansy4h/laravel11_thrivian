@@ -10,7 +10,7 @@ class Community extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'is_active', 'creator_id', 'thumbnail', 'slug','category',
+        'name', 'description', 'is_active', 'creator_id', 'thumbnail', 'advert_thumbnail', 'slug','category',
     ];
 
     // Define the relationship with the User model

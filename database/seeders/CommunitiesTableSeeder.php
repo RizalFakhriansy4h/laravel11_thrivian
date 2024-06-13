@@ -34,6 +34,14 @@ class CommunitiesTableSeeder extends Seeder
             '/storage/thumbnail_community/comm4.jpg',
             '/storage/thumbnail_community/comm5.jpg',
         ];
+        
+        $advert_thumbnails = [
+            '/storage/advert_thumbnail_community/advert_comm1.jpg',
+            '/storage/advert_thumbnail_community/advert_comm2.jpg',
+            '/storage/advert_thumbnail_community/advert_comm3.jpg',
+            '/storage/advert_thumbnail_community/advert_comm4.jpg',
+            '/storage/advert_thumbnail_community/advert_comm5.jpg',
+        ];
 
         foreach ($names as $index => $name) {
             $slug = Str::slug($name, '-');
@@ -47,6 +55,7 @@ class CommunitiesTableSeeder extends Seeder
                 'is_active' => true,
                 'creator_id' => $creator->id,
                 'thumbnail' => $thumbnails[$index],
+                'advert_thumbnail' => $advert_thumbnails[$index],
                 'slug' => $slug,
             ]);
 

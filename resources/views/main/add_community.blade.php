@@ -10,10 +10,17 @@
                     <h4 class="card-title text-center mb-4">Create New Community</h4>
                     <form method="post" action="{{ route('requestCommunity') }}" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-3">
-                            <label for="postThumbnail" class="form-label">Thumbnail</label>
-                            <input type="file" class="form-control" id="postThumbnail" accept="image/*" name="thumbnail" onchange="previewImage();">
-                            <img id="thumbnailPreview" src="" alt="Thumbnail Preview" class="img-thumbnail mt-2" style="display: none; width: 200px; height: auto;">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="advertThumbnail" class="form-label">Advert Thumbnail</label>
+                                <input type="file" class="form-control" id="advertThumbnail" accept="image/*" name="advert_thumbnail" onchange="previewImage('advertThumbnail', 'advertThumbnailPreview');">
+                                <img id="advertThumbnailPreview" src="" alt="Advert Thumbnail Preview" class="img-thumbnail mt-2" style="display: none; width: 200px; height: auto;">
+                            </div>
+                            <div class="col mb-3">
+                                <label for="thumbnail" class="form-label">Thumbnail</label>
+                                <input type="file" class="form-control" id="thumbnail" accept="image/*" name="thumbnail" onchange="previewImage('thumbnail', 'thumbnailPreview');">
+                                <img id="thumbnailPreview" src="" alt="Thumbnail Preview" class="img-thumbnail mt-2" style="display: none; width: 200px; height: auto;">
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="postCategory" class="form-label">Category</label>
@@ -43,14 +50,14 @@
 </main>
 
 <script>
-function previewImage() {
-    var file = document.getElementById("postThumbnail").files;
+function previewImage(inputId, previewId) {
+    var file = document.getElementById(inputId).files;
     if (file.length > 0) {
         var fileReader = new FileReader();
 
         fileReader.onload = function (event) {
-            document.getElementById("thumbnailPreview").setAttribute("src", event.target.result);
-            document.getElementById("thumbnailPreview").style.display = "block";
+            document.getElementById(previewId).setAttribute("src", event.target.result);
+            document.getElementById(previewId).style.display = "block";
         };
 
         fileReader.readAsDataURL(file[0]);

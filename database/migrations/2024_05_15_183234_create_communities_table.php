@@ -16,6 +16,7 @@ class CreateCommunitiesTable extends Migration
             $table->boolean('is_active')->default(false);
             $table->foreignId('creator_id')->constrained('users');
             $table->string('thumbnail');
+            $table->string('advert_thumbnail');
             $table->string('slug')->unique();
             $table->timestamps();
         });

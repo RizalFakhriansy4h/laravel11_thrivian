@@ -226,7 +226,7 @@
 				<div class="col-md-4 col-sm-6 mb-4">
 					<div class="card card-custom">
 						<div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
-						<img src="{{ $cb->user->avatar }}" class="card-img-top border-dark" alt="Card image">
+						<img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="Card image">
 						<div class="card-body text-center mt-5 pt-5">
 							<h5 class="card-title mt-5">{{ $cb->name }}</h5>
 							<p class="card-text">{{ $cb->description }}</p>
@@ -249,7 +249,7 @@
 				<div class="col-md-4 col-sm-6 mb-4">
 					<div class="card card-custom">
 						<div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
-						<img src="{{ $cb->user->avatar }}" class="card-img-top border-dark" alt="Card image">
+						<img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="Card image">
 						<div class="card-body text-center mt-5 pt-5">
 							<h5 class="card-title mt-5">{{ $cb->name }}</h5>
 							<p class="card-text">{{ $cb->description }}</p>
@@ -272,7 +272,7 @@
 				<div class="col-md-4 col-sm-6 mb-4">
 					<div class="card card-custom">
 						<div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
-						<img src="{{ $cb->user->avatar }}" class="card-img-top border-dark" alt="Card image">
+						<img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="Card image">
 						<div class="card-body text-center mt-5 pt-5">
 							<h5 class="card-title mt-5">{{ $cb->name }}</h5>
 							<p class="card-text">{{ $cb->description }}</p>

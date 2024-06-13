@@ -74,6 +74,7 @@ class CommunityController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'description' => 'required',
+            'advert_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
 
         ]);
@@ -100,6 +101,22 @@ class CommunityController extends Controller
             
             $thumbnailUrl = "/storage/thumbnail_community/$newName";
             $community->thumbnail = $thumbnailUrl;
+        }
+        
+        if ($request->hasFile('advert_thumbnail')) {
+            $img = $request->file('advert_thumbnail');
+            
+            $destinationPath = public_path('storage/advert_thumbnail_community');
+            if (!file_exists($destinationPath)) {
+                mkdir($destinationPath, 0777, true);
+            }
+            
+            $newName = uniqid() . '_' . $img->getClientOriginalName();
+            
+            $img->move($destinationPath, $newName);
+            
+            $advert_thumbnailUrl = "/storage/advert_thumbnail_community/$newName";
+            $community->advert_thumbnail = $advert_thumbnailUrl;
         }
 
 
