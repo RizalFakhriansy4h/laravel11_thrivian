@@ -6,14 +6,13 @@
   display: none;
   position: absolute;
   top: 40px;
-  right: 12%;
+  right: 0;
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   z-index: 1;
-}
-
+  }
 
 .nav-item .profile:hover .profile-info {
   display: block;
@@ -62,18 +61,18 @@
 }
 
 .custom-hr-mobile {
-  background-color: #13005a !important;
+  background-color: #015AAA !important;
   height: 3px;
   border: none;
 }
 
 .badge-post {
-  color: #22145A;
-  border-color: #22145A;
+  color: #015AAA;
+  border-color: #015AAA;
   padding: 0.5%;
 }
 .badge-post.active {
-  background-color: #13005A !important;
+  background-color: #015AAA !important;
   color: white !important;
 }
 
@@ -88,9 +87,6 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.card:hover {
-    transform: scale(1.07);
-}
 
 .card-body {
   padding: 15px;
@@ -104,7 +100,7 @@
   border-radius: 8px;
   padding: 3px 2px;
   font-weight: bold;
-  color: #13005A;
+  color: #015AAA;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,7 +124,7 @@
 
 .badge {
   background-color: #FFFFFF;
-  color: #13005A;
+  color: #015AAA;
   font-size: 16px;
   padding: 3px 2px;
   border-radius: 8px;
@@ -233,3 +229,26 @@
       font-size: 12px; /* Mengecilkan ukuran font link */
   }
 }
+
+/* Floating Button for Mobile */
+.floating-btn {
+  position: fixed;
+  bottom: 60px;
+  right: 25px;
+  background-color: #015AAA;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.floating-btn i {
+  font-size: 20px;
+  color: white;
+}
+

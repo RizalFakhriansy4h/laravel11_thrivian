@@ -15,9 +15,11 @@
 		<link rel="stylesheet" href="/assets/css/style.css">
 		<script src="/assets/js/index.js"></script>
 	</head>
+
 	<div id="splash-screen" class="splash-screen">
-		<img src="/assets/img/thrivan-logo.png" alt="Thrivian-logo" class="logo">
+    	<img src="/assets/img/Thrivian Logo_OK.png" alt="Thrivian-logo" class="logo">
 	</div>
+
 	<body>
 		@if ($errors->any())
 		<script>
@@ -54,21 +56,21 @@
 		<nav class="navbar navbar-light bg-light fixed-top d-none d-lg-block">
 			<div class="container">
 				<a class="navbar-brand" href="{{ route('home') }}">
-				<img src="/assets/img/thrivan-logo.png" alt="Thrivian.org" width="180" height="35">
-				</a>
+                	<img src="/assets/img/Thrivian Logo_OK.png" alt="Thrivian.org" width="60" height="45" />
+            	</a>
 				<ul class="nav me-auto">
 					<li class="nav-item">
-						<a class="nav-link text-secondary  {{ $title == 'Home' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Home' ? "#13005A !important;" : ""}}" href="{{ route('home') }}">Home</a>
+						<a class="nav-link text-secondary  {{ $title == 'Home' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Home' ? "#015AAA !important;" : ""}}" href="{{ route('home') }}">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-secondary {{ $title == 'Community' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Community' ? "#13005A !important;" : ""}}" href="{{ route('community') }}">Community</a>
+						<a class="nav-link text-secondary {{ $title == 'Community' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Community' ? "#015AAA !important;" : ""}}" href="{{ route('community') }}">Community</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-secondary {{ $title == 'Event' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Event' ? "#13005A !important;" : ""}}" href="{{ route('homeEvent') }}">Event</a>
+						<a class="nav-link text-secondary {{ $title == 'Event' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Event' ? "#015AAA !important;" : ""}}" href="{{ route('homeEvent') }}">Event</a>
 					</li>
 					@if ($role == 1)
 						<li class="nav-item">
-							<a class="nav-link text-secondary {{ $title == 'Admin' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Admin' ? "#13005A !important;" : ""}}" href="{{ route('tableCommunity') }}">Admin</a>
+							<a class="nav-link text-secondary {{ $title == 'Admin' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Admin' ? "#015AAA !important;" : ""}}" href="{{ route('tableCommunity') }}">Admin</a>
 						</li>
 					@endif
 				</ul>

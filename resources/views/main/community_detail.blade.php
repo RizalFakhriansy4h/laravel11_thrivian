@@ -1,10 +1,10 @@
 <style>
 	.btn-custom-outline {
-	border-color: #13005A;
-	color: #13005A;
+	border-color: #015AAA;
+	color: #015AAA;
 	}
 	.btn-custom-outline:hover {
-	background-color: #13005A;
+	background-color: #015AAA;
 	color: white;
 	}
 	.modal-body-custom {
@@ -82,7 +82,7 @@
 			<div class="card-join mb-2 custom-card">
 				<img src="{{ $community->thumbnail }}" class="card-img-top" alt="{{ $community->name }}">
 				<div class="card-body">
-					<h2 class="card-title" style="color: #13005A;">{{ $community->name }}</h2>
+					<h2 class="card-title" style="color: #015AAA;">{{ $community->name }}</h2>
 					<p class="card-text">{{ $community->description }}</p>
 					<div class="d-flex align-items-center custom-elements" style="gap: 10px;">
 						@if ($isMember)
@@ -101,7 +101,7 @@
 							<i class="fas fa-circle text-success" style="font-size: 10px;"></i>
 							<span class="ms-1">1 Online</span>
 						</div>
-						<button type="button" class="btn btn-link" style="text-decoration: none; color: #13005A;">
+						<button type="button" class="btn btn-link" style="text-decoration: none; color: #015AAA;">
 						<i class="fas fa-share-alt"></i> Share Community
 						</button>
 					</div>
@@ -110,7 +110,7 @@
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h4 class="modal-title" id="communityRulesModalLabel" style="color: #13005A;">Read and Agree to Community Rules</h4>
+									<h4 class="modal-title" id="communityRulesModalLabel" style="color: #015AAA;">Read and Agree to Community Rules</h4>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
 								<div class="modal-body modal-body-custom">
@@ -128,7 +128,7 @@
 									</ol>
 									<div class="form-check">
 										<input class="form-check-input" type="checkbox" id="agreeRulesCheckbox">
-										<label class="form-check-label" for="agreeRulesCheckbox" style="color: #13005A;">
+										<label class="form-check-label" for="agreeRulesCheckbox" style="color: #015AAA;">
 										I agree to all the rules above
 										</label>
 									</div>
@@ -182,28 +182,28 @@
 		</div>
 		<div class="col-3 border-start border-end ml-auto d-none d-md-block" style="overflow-y: auto;">
 			@if ($isMember)
-			<a href="{{ route('community.post', ['slug' => $community->slug]) }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #13005A; color: #13005A;">
-			<i class="fas fa-plus-circle" style="font-size: 15px; color: #13005A;"></i>
+			<a href="{{ route('community.post', ['slug' => $community->slug]) }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #015AAA; color: #015AAA;">
+			<i class="fas fa-plus-circle" style="font-size: 15px; color: #015AAA;"></i>
 			Create New Post
 			</a>
 			@endif
 			@if ($isAdmin)
-			<a href="{{ route('community.addevent', ['slug' => $community->slug]) }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #13005A; color: #13005A;">
-			<i class="fas fa-plus-circle" style="font-size: 15px; color: #13005A;"></i>
+			<a href="{{ route('community.addevent', ['slug' => $community->slug]) }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #015AAA; color: #015AAA;">
+			<i class="fas fa-plus-circle" style="font-size: 15px; color: #015AAA;"></i>
 			Create New Event
 			</a>
 			@endif
 			<hr class="my-3" style="border-top: 3px solid #E5E5E5;">
 			<div class="container mt-3">
 				<div class="about-section">
-					<h4 style="color: #13005A;"><strong>About this community</strong></h4>
+					<h4 style="color: #015AAA;"><strong>About this community</strong></h4>
 					<p style="font-size: 0.875rem;">{{ $community->description }}</p>
 				</div>
 			</div>
 			<hr class="my-3" style="border-top: 3px solid #E5E5E5;">
 			@if ($allMyEvents->isNotEmpty())
 				<div class="mt-3">
-					<h4 style="color: #13005A;">Upcoming Events</h4>
+					<h4 style="color: #015AAA;">Upcoming Events</h4>
 					@foreach($allMyEvents as $index => $event)
 					@if($index == 0)
 					<!-- start jika looping pertama -->
@@ -264,9 +264,9 @@
 	       joinButton.textContent = 'Joined';
 	       joinButton.classList.remove('btn-outline-primary');
 	       joinButton.classList.add('btn-primary');
-	       joinButton.style.backgroundColor = '#13005A';
+	       joinButton.style.backgroundColor = '#015AAA';
 	       joinButton.style.color = '#ffffff';
-	       joinButton.style.borderColor = '#13005A';
+	       joinButton.style.borderColor = '#015AAA';
 	
 	       // Create the leave button
 	       var leaveButton = document.createElement('button');
@@ -314,9 +314,9 @@
 	joinButton.textContent = 'Joined';
 	joinButton.classList.remove('btn-outline-primary');
 	joinButton.classList.add('btn-primary');
-	joinButton.style.backgroundColor = '#13005A'; // Warna ungu yang dimaksud
+	joinButton.style.backgroundColor = '#015AAA'; // Warna ungu yang dimaksud
 	joinButton.style.color = '#ffffff'; // Warna teks putih
-	joinButton.style.borderColor = '#13005A'; // Warna border ungu
+	joinButton.style.borderColor = '#015AAA'; // Warna border ungu
 	
 	
 	// Add the leave button next to the joined button

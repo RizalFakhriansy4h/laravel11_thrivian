@@ -20,7 +20,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<style>
 		.banner-section {
-		background-color: #13005A;
+		background-color: #015AAA;
 		color: white;
 		padding: 0;
 		}
@@ -138,23 +138,23 @@
 				</div>
 				<div class="btn-wrapper">
 					@if ($isJoin)
-					<span class="btn btn-light rounded-pill mt-5 me-3 px-5 py-2" style="background-color: #5458E5; color: #fff; border-color: #5458E5;">Joined</span>
+					<span class="btn btn-light rounded-pill mt-5 me-3 px-5 py-2" style="background-color: #fff; color: #000; border-color: #fff;">Joined</span>
 					@else
-					<button type="button" class="btn btn-light rounded-pill mt-5 me-3 px-5 py-2" style="background-color: #5458E5; color: #fff; border-color: #5458E5;" onclick="joinEvent({{ $event->id }})">Buy your seat now!</button>
+					<button type="button" class="btn btn-light rounded-pill mt-5 me-3 px-5 py-2" style="background-color: #fff; color: #000; border-color: #fff;" onclick="joinEvent({{ $event->id }})">Buy your seat now!</button>
 					@endif
 					@if ($isCreator)
-					<button type="button" class="btn btn-light rounded-pill mt-5 me-3 px-5 py-2" style="background-color: #5458E5; color: #fff; border-color: #5458E5;"  data-bs-toggle="modal" data-bs-target="#memberModal">Participants</button>
+					<button type="button" class="btn btn-light rounded-pill mt-5 me-3 px-5 py-2" style="background-color: #fff; color: #000; border-color: #fff;"  data-bs-toggle="modal" data-bs-target="#memberModal">Participants</button>
 					@endif
 				</div>
 			</div>
 		</div>
 	</section>
 	<section class="container my-5">
-		<h1 class="text-title" style="color: #fff; background-color: #13005A;">About This Event</h1>
+		<h1 class="text-title" style="color: #fff; background-color: #015AAA;">About This Event</h1>
 		<p>{{ $event->description }}</p>
 	</section>
 	<section class="container my-5">
-		<h1 class="text-title" style="color: #fff; background-color: #13005A;">Where We're Located</h1>
+		<h1 class="text-title" style="color: #fff; background-color: #015AAA;">Where We're Located</h1>
 		<div class="row">
 			<div class="col-md-6">
 				<p>This event is located in the heart of Jakarta city, close to all city center facilities, attractions, and easily accessible with a range of travel options.</p>

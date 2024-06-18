@@ -59,7 +59,7 @@
             <nav class="navbar navbar-light bg-light fixed-top">
                 <div class="container d-flex justify-content-center"> <!-- Menggunakan flexbox untuk pengaturan posisi -->
                     <a class="navbar-brand" href="{{ route('intro') }}">
-                        <img src="/assets/img/thrivan-logo.png" alt="" width="180" height="40" style="display: block; margin: 0 auto;">
+                        <img src="/assets/img/Thrivian Logo_OK.png" alt="" width="80" height="75" style="display: block; margin: 0 auto;">
                     </a>
                 </div>
             </nav>
@@ -69,10 +69,10 @@
             <div class="col-md-6 mx-auto" id="loginForm">
 
                 <div class="row align-items-center">
-
+                    
                     <div class="header-text mb-4 text-center">
-                        <h2>@yield('title')</h2>
-                    </div>
+                        <h1 style="color: #015AAA;">@yield('title')</h1>
+                    </div>  
 
 						@yield('content')
 

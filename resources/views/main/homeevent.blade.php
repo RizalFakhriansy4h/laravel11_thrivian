@@ -12,181 +12,225 @@
 		<link rel="stylesheet" href="/assets/css/events.css">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
 		<style>
-			.banner {
-			position: relative;
-			width: 100%;
-			height: 200px;
-			overflow: hidden;
-			}
-			.image-container img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			filter: blur(0);
-			transition: filter 0.3s;
-			}
-			.image-container::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(to right, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%);
-			}
-			.text {
-			position: absolute;
-			right: 0;
-			top: 50%;
-			transform: translateY(-50%);
-			color: #fff;
-			padding-right: 20px;
-			width: 40%;
-			text-align: right;
-			}
-			.event-card {
-				position: relative;
-				border: 1px solid #ddd;
-				border-radius: 10px;
-				overflow: hidden;
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-				margin-top: 5px;
-				transition: transform 0.3 ease-in-out;
-				margin-bottom: 15px;
-				padding: 15px;
-			}
-			.event-card:hover {
-				transform: scale(1.09);
-			}
-			.event-card img {
-			width: 100%;
-			height: auto;
-			border-top-left-radius: 15px;
-			border-top-right-radius: 15px;
-			}
-			.event-date {
-			position: absolute;
-			right: 10px;
-			bottom: 110px;
-			background-color: white;
-			color: #13005A;
-			padding: 4px;
-			border-radius: 5px;
-			font-size: 0.9rem;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			}
-			.event-date-content {
-				text-align: center;
-			}
-			.event-date-day {
-				font-size: 1.4em;
-				font-weight: bold;
-				display: block;
-			}
-			.event-date-month {
-				font-size: 0.9em;
-				display: block;
-			}
-			.event-info {
-				padding: 10px;
-				background-color: white;
-			}
-			.event-location {
-				font-size: 0.9em;
-				color: #13005A;
-				margin-bottom: 5px;
-			}
-			.event-title {
-				font-size: 1.2em;
-				font-weight: bold;
-				margin: 0
-			}
-			.event-community {
-				font-size: 0.9em;
-				color: #999;
-			}
-			.event-banner {
-			position: relative;
-			width: 100%;
-			height: 400px;
-			background: url('/assets/img/banner.jpg') no-repeat center center;
-			background-size: cover;
-			}
-			.event-overlay {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 139, 0.8));
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			padding: 20px;
-			}
-			.event-content {
-			padding-right: 14%;
-			color: white;
-			}
-			#footer {
-			background-color: #13005A;
-			padding: 2rem 0;
-			color: #fff;
-			}
-			#footer .footer-col {
-			margin-bottom: 1rem;
-			}
-			#footer .footer-col h6 {
-			font-weight: bold;
-			}
-			#footer .footer-col ul {
-			list-style: none;
-			padding: 0;
-			}
-			#footer .footer-col ul li {
-			margin-bottom: 0.5rem;
-			}
-			#footer .social-icons i {
-			font-size: 1.5rem;
-			margin-right: 0.5rem;
-			color: #fff;
-			}
-			#footer .app-buttons img {
-			height: 40px;
-			margin-right: 0.5rem;
-			}
-			#footer .footer-bottom {
-			border-top: 1px solid #dee2e6;
-			padding-top: 1rem;
-			margin-top: 1rem;
-			text-align: center;
-			}
-			#footer .footer-logo {
-			max-width: 200px;
-			height: auto;
-			}
-		</style>
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(0);
+      transition: filter 0.3s;
+    }
+
+    .image-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%);
+    }
+
+    .text {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      padding-right: 20px;
+      width: 40%;
+      text-align: right;
+    }
+
+    .grow-card {
+      transition: transform 0.3s ease;
+    }
+
+    .grow-card:hover {
+      transform: scale(1.05);
+    }
+
+      .card-img-top {
+      height: 170px;
+      object-fit: cover;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .card-date {
+      position: absolute;
+      top: -90px;
+      right: 10px;
+      color: #015AAA;
+      background-color: white;
+      padding: 2px 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .card-date h5 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .card-date p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .card-body {
+      position: relative;
+    }
+    .location-badge {
+      width: 100%;
+      position: absolute;
+      top: -29px;
+      left: 0;
+      background-color: #015AAA;
+      color: white;
+      padding: 5px 10px;
+    }
+    .price-badge {
+      background-color: #015AAA;
+      color: white;
+      padding: 5px 10px;
+      width: 50%;
+      border-radius: 0px 40px 40px 0px;
+      display: inline-block;
+    }
+
+    .event-banner {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: url('/assets/img/banner.jpg') no-repeat center center;
+      background-size: cover;
+    }
+    .event-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(1, 90, 170, 0.8));
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+    .event-content {
+      padding-right: 14%;
+      color: white;
+    }
+    .partner-img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .partner-img:hover {
+            transform: scale(1.1);
+        }
+
+    #footer {
+      background-color: #015AAA;
+      padding: 2rem 0;
+      color: white;
+    }
+    #footer .footer-col {
+      margin-bottom: 1rem;
+    }
+    #footer .footer-col h6 {
+      font-weight: bold;
+    }
+    #footer .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+    #footer .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+    #footer .social-icons i {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+      color: white;
+    }
+    #footer .app-buttons img {
+      height: 40px;
+      margin-right: 0.5rem;
+    }
+    #footer .footer-bottom {
+      border-top: 1px solid #dee2e6;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    #footer .footer-logo {
+      max-width: 150px;
+      height: auto;
+    }
+
+    @media (max-width: 767px) {
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .price-badge, .card-text {
+        font-size: 0.8rem;
+    }
+
+    .card {
+        height: 100%;
+    }
+
+    .card-img-top {
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .location-badge {
+        font-size: 0.8rem;
+        padding: 4px 5px;
+    }
+
+    .card-date {
+        top: -70px;
+        right: 5px;
+    }
+
+    .card-date h5 {
+        font-size: 18px;
+    }
+
+    .card-date p {
+        font-size: 12px;
+    }
+}
+  </style>
 	</head>
 	<body>
 		<!-- Navbar untuk Desktop -->
 		<nav class="navbar navbar-light bg-light fixed-top d-none d-lg-block">
 			<div class="container">
-				<a class="navbar-brand" href="#">
-				<img src="/assets/img/thrivan-logo.png" alt="Thrivian.org" width="180" height="35" />
+				<a class="navbar-brand" href="{{ route('home') }}">
+					<img src="/assets/img/Thrivian Logo_OK.png" alt="Thrivian.org" width="60" height="45" />
 				</a>
 				<ul class="nav me-auto">
 					<li class="nav-item">
-						<a class="nav-link text-secondary  {{ $title == 'Home' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Home' ? "#13005A !important;" : ""}}" href="{{ route('home') }}">Home</a>
+						<a class="nav-link text-secondary  {{ $title == 'Home' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Home' ? "#015AAA !important;" : ""}}" href="{{ route('home') }}">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-secondary {{ $title == 'Community' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Community' ? "#13005A !important;" : ""}}" href="{{ route('community') }}">Community</a>
+						<a class="nav-link text-secondary {{ $title == 'Community' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Community' ? "#015AAA !important;" : ""}}" href="{{ route('community') }}">Community</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-secondary {{ $title == 'Event' || 'Home Event' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Event' || 'Home Event' ? "#13005A !important;" : ""}}" href="{{ route('homeEvent') }}">Event</a>
+						<a class="nav-link text-secondary {{ $title == 'Event' || 'Home Event' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Event' || 'Home Event' ? "#015AAA !important;" : ""}}" href="{{ route('homeEvent') }}">Event</a>
 					</li>
 					@if ($role == 1)
 					<li class="nav-item">
-						<a class="nav-link text-secondary {{ $title == 'Admin' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Admin' ? "#13005A !important;" : ""}}" href="{{ route('tableCommunity') }}">Admin</a>
+						<a class="nav-link text-secondary {{ $title == 'Admin' ? 'active text-decoration-underline' : '' }}" style="color: {{ $title == 'Admin' ? "#015AAA !important;" : ""}}" href="{{ route('tableCommunity') }}">Admin</a>
 					</li>
 					@endif
 				</ul>
@@ -315,15 +359,24 @@
 			<h4 class="mb-4">Upcoming Events</h4>
 			<div class="row d-flex justify-content-between">
 				@foreach($threeEvent as $event)
-				<div class="col-md-3">
-                    <div class="event-card">
-                        <img src="{{$event->thumbnail}}" alt="Event Image">
-                        <div class="event-date">{{ \Carbon\Carbon::parse($event->start_date)->format('F jS') }}</div>
-                        <h5 class="mt-3"><a href="{{ route('event.detail', ['slug' => $event->slug]) }}">{{ $event->name }}</a> </h5>
-                        <p>{{ Str::limit($event->description, 75) }}</p>
-                        <p> <span><i class="bi bi-geo-alt"></i></span> {{ $event->location }}
-                        </p>
-                    </div>
+				<div class="col-6 col-md-3 mt-3 mb-3">
+					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}">
+						<div class="card shadow grow-card" style="width: 100%; border-radius: 15px;">
+							<img src="{{$event->thumbnail}}" class="card-img-top" alt="{{ $event->name }}">
+							<div class="card-body">
+								<div class="location-badge">
+									<i class="bi bi-geo-alt"></i> {{ $event->location }}
+								</div>
+								<div class="card-date">
+									<h5>{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</h5>
+									<p>{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</p>
+								</div>
+								<h5 class="card-title py-2" style="margin-top: -3%;">{{ $event->name }}</h5>
+								<p class="price-badge d-flex justify-content-center">{{ 'Rp. ' . number_format($event->price, 0, ',', '.') }}</p>
+								<p class="card-text text-secondary">{{ Str::limit($event->description, 50) }}</p>
+							</div>
+						</div>
+					</a>
 				</div>
 				@endforeach
 			</div>
@@ -338,8 +391,8 @@
 			</div>
 		</div>
 		<div class="container mx-auto mt-5 text-center">
-			<h2 class="text-2xl font-semibold mb-4" style="color: #13005A;">Our Sponsorship</h2>
-			<p style="color: #13005A; margin-bottom: 45px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br>eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<h2 class="text-2xl font-semibold mb-4" style="color: #015AAA;">Our Sponsorship</h2>
+			<p style="color: #015AAA; margin-bottom: 45px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br>eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			<div class="row justify-content-center align-items-start">
 				<!-- Gambar-gambar partner -->
 				<div class="col-6 col-md-4 col-lg-2 partner-col">

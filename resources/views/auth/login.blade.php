@@ -16,6 +16,7 @@
                 <label for="Email">Email</label>
             </div>
         </div>
+
         <div class="input-group mb-3 mx-auto" style="width: 400px;">
             <span class="input-group-text"><i class="bi bi-key"></i></span>
             <div class="form-floating">

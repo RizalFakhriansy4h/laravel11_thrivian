@@ -2,179 +2,209 @@
 @section('title', 'Event')
 @section('content')
 <style>
-	
+	/* Gaya CSS tambahan */
+	.nav-item:hover .nav-link {
+	text-decoration: underline;
+	}
+	.profile-info {
+	display: none;
+	position: absolute;
+	top: 40px;
+	right: 0;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding: 10px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	z-index: 1;
+	}
+	.nav-item .profile:hover .profile-info {
+	display: block;
+	}
+	.profile-info a {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	}
+	.profile-info a:hover {
+	text-decoration: underline;
+	}
+	.profile-info p {
+	margin: 5px 0;
+	color: #333;
+	}
+	.icon.user.outline {
+	color: black;
+	}
+	.hidden {
+	display: none;
+	}
+	.navbar-bawah .nav-item .nav-link.active {
+	text-decoration: underline;
+	color: #13005a !important;
+	}
 	#selectedCategories .btn {
 	border-radius: 15px;
 	}
-	.custom-card {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	height: 100%;
-	border-radius: 8px;
-	width: 18rem;
+	.grow-card {
+	transition: transform 0.3s ease;
 	}
-	.card-img-container {
-	position: relative;
-	height: 100%;
-	overflow: hidden;
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
+	.grow-card:hover {
+	transform: scale(1.05);
 	}
-	.custom-card img {
+	.card-img-top {
+	height: 170px;
 	object-fit: cover;
-	width: 100%;
-	height: 100%;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	}
+	.card-date {
+	position: absolute;
+	top: -90px;
+	right: 10px;
+	color: #015AAA;
+	background-color: white;
+	padding: 2px 10px;
+	border-radius: 5px;
+	text-align: center;
+	}
+	.card-date h5 {
+	margin: 0;
+	font-size: 24px;
+	}
+	.card-date p {
+	margin: 0;
+	font-size: 14px;
 	}
 	.card-body {
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	}
-	.card-text {
-	flex-grow: 1;
-	}
-	.col-md-3 {
-	transition: transform 0.3s, border 0.3s;
-	}
-	.col-md-3:hover {
-	transform: scale(1.04);
-	}
-	.badge-custom {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	z-index: 1;
-	background-color: #13005a;
-	}
-	.badge-secondary {
-	background-color: #13005a;
-	}
-	.event-card {
 	position: relative;
-	border-radius: 10px;
-	overflow: hidden;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	margin-top: 5px;
-	transition: transform 0.3s ease-in-out;
 	}
-	.event-card:hover {
-	transform: scale(1.07);
-	}
-	.event-image {
+	.location-badge {
 	width: 100%;
-	height: auto;
-	}
-	.event-date {
 	position: absolute;
-	bottom: 115px;
-	right: 20px;
-	background-color: white;
-	color: #13005a;
-	border-radius: 9px;
-	padding: 3px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	}
-	.event-date-content {
-	text-align: center;
-	}
-	.event-date-day {
-	font-size: 1.4em;
-	font-weight: bold;
-	display: block;
-	}
-	.event-date-month {
-	font-size: 0.9em;
-	display: block;
-	}
-	.event-info {
-	padding: 10px;
-	background-color: white;
-	}
-	.event-location {
-	font-size: 0.9em;
-	color: #13005a;
-	margin-bottom: 5px;
-	}
-	.event-title {
-	font-size: 1.2em;
-	font-weight: bold;
-	margin: 0;
-	}
-	.event-community {
-	font-size: 0.9em;
-	color: #999;
-	}
-	@media (max-width: 767px) {
-	.col-sm-6 {
-	flex: 0 0 25%;
-	max-width: 50%;
-	padding: 5px;
-	}
-	.event-card {
-	margin-top: 5px;
-	}
-	.event-image {
-	width: 100%;
-	height: 70%;
-	}
-	.event-date {
-	position: absolute;
-	bottom: 185px;
-	right: 10px;
-	border-radius: 4px;
-	padding: 0.5px;
-	}
-	.event-date-content {
-	text-align: center;
-	}
-	.event-date-day {
-	font-size: 0.8em;
-	font-weight: bold;
-	display: block;
-	}
-	.event-date-month {
-	font-size: 0.5em;
-	display: block;
-	}
-	.event-info {
-	padding: 10px;
-	background-color: white;
-	}
-	.event-location {
-	font-size: 0.5em;
-	color: #13005a;
-	margin-bottom: 5px;
-	}
-	.event-title {
-	font-size: 1em;
-	font-weight: bold;
-	margin: 0;
-	}
-	.event-price {
+	top: -29px;
+	left: 0;
+	background-color: #015AAA;
 	color: white;
-	font-size: 0.5em;
+	padding: 5px 10px;
 	}
-	.event-community {
-	font-size: 0.5em;
-	color: #999;
+	.price-badge {
+	background-color: #015AAA;
+	color: white;
+	padding: 5px 10px;
+	width: 50%;
+	border-radius: 0px 40px 40px 0px;
+	display: inline-block;
 	}
-	.pagination {
-	padding-bottom: 25%;
+	@media (max-width: 987px) {
+	#eventCards .card {
+	width: calc(50% - 60px); /* Menghitung lebar card agar mempertahankan bentuknya */
+	margin-right: 0px;
+	margin-left: 0px;
+	}
+	#eventCards .card:first-child {
+	margin-left: 0;
+	}
+	#eventCards .card:last-child {
+	margin-right: 0;
 	}
 	}
 	#selectedCategories .badge.bg-secondary {
-	font-size: 0.8rem;
-	padding: 5px 10px;
-	border-radius: 15px;
-	background-color: #13005a;
+	font-size: 0.8rem; /* Menambah ukuran font */
+	padding: 5px 10px; /* Menambah padding */
+	border-radius: 15px; /* Menyamakan border radius dengan tombol filter */
+	background-color: #13005a; /* Menyamakan background color dengan tombol filter */
+	color: white; /* Menyamakan warna teks dengan tombol filter */
+	margin: 2px; /* Menambahkan margin antar tombol */
+	}
+	#footer {
+	background-color: #015AAA;
 	color: white;
-	margin: 2px;
+	padding: 2rem 0;
+	}
+	#footer .footer-col {
+	margin-bottom: 1rem;
+	}
+	#footer .footer-col h6 {
+	font-weight: bold;
+	color: white;
+	}
+	#footer .footer-col ul {
+	list-style: none;
+	padding: 0;
+	}
+	#footer .footer-col ul li {
+	margin-bottom: 0.5rem;
+	}
+	#footer .footer-col ul li a {
+	color: white;
+	text-decoration: none;
+	}
+	#footer .footer-col ul li a:hover {
+	text-decoration: underline;
+	}
+	#footer .social-icons i {
+	font-size: 1.5rem;
+	margin-right: 0.5rem;
+	color: white;
+	}
+	#footer .app-buttons img {
+	height: 40px;
+	margin-right: 0.5rem;
+	}
+	#footer .footer-bottom {
+	border-top: 1px solid #dee2e6;
+	padding-top: 1rem;
+	margin-top: 1rem;
+	text-align: center;
+	}
+	#footer .footer-logo {
+	max-width: 150px;
+	height: auto;
+	}
+	@media (max-width: 768px) {
+	.banner-content {
+	flex-direction: column;
+	text-align: center;
+	}
+	.banner-content .image-content {
+	width: 100%;
+	padding-left: 0;
+	}
+	.banner-content .image-content img {
+	object-fit: contain;
+	height: auto;
+	padding-left: 0;
+	}
+	.banner-content .text-content {
+	padding: 20px;
+	}
+	#banner-home {
+	height: auto;
+	padding: 2rem 0;
+	}
+	#banner-home .banner-content {
+	position: static;
+	transform: none;
+	}
+	#banner2 .text-content, #banner3 .text-content, #banner4 .text-content {
+	padding: 0 1rem;
+	display: flex;
+	justify-content: center;
+	}
+	#footer .footer-bottom {
+	text-align: center;
+	}
+	#footer .footer-col {
+	text-align: center;
+	}
+	#footer .footer-logo {
+	margin-bottom: 1rem;
+	max-width: 100px;
+	max-height: 120px;
+	}
 	}
 </style>
 <link rel="stylesheet" href="/assets/css/events.css">
-
 <main class="container-fluid" style="margin-top: 69px">
 	<div class="container">
 		<div class="row">
@@ -218,7 +248,7 @@
 						class="btn btn-secondary btn-sm dropdown-toggle"
 						data-bs-toggle="dropdown"
 						aria-expanded="false"
-						style="border-radius: 15px; background-color: #13005a"
+						style="border-radius: 15px; background-color: #015AAA"
 						>
 					<i class="fas fa-bars custom-bars-icon"></i> Filter
 					</button>
@@ -259,7 +289,7 @@
 							id="dropdownMenuLink"
 							data-bs-toggle="dropdown"
 							aria-expanded="false"
-							style="color: #13005a"
+							style="color: #015AAA"
 							>
 						Sort by: Latest
 						</span>
@@ -288,79 +318,69 @@
 				</div>
 			</div>
 			<div id="eventCards" class="row">
-
 				@foreach ($eventFinances as $event)
-				<div class="col-md-3 col-sm-6 mt-3 mb-3 kategori-1 finance">
-					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}" class="card-link text-dark">
-						<div class="event-card">
-							<div class="card-img-container">
-								<img src="{{$event->thumbnail}}" alt="{{ $event->name }}" class="event-image"/>
-							</div>
-							<div class="event-date">
-								<div class="event-date-content">
-									<span class="event-date-day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</span>
-									<span class="event-date-month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</span>
+				<div class="col-md-3 col-sm-6 mt-3 mb-3  finance">
+					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}">
+						<div class="card shadow grow-card" style="width: 100%; border-radius: 15px;">
+							<img src="{{$event->thumbnail}}" class="card-img-top" alt="{{ $event->name }}">
+							<div class="card-body">
+								<div class="location-badge">
+									<i class="bi bi-geo-alt"></i>{{ $event->location }}
 								</div>
-							</div>
-							<div class="event-info">
-								<p class="event-location"><i class="bi bi-geo-alt"></i>{{ $event->location }}</p>
-								<h5 class="event-title">{{ $event->name }}</h5>
-								<p class="event-price">{{ 'Rp. ' . number_format($event->price, 0, ',', '.') }}</p>
-								<p class="event-community">{{ Str::limit($event->description, 50) }}</p>
+								<div class="card-date">
+									<h5>{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</h5>
+									<p>{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</p>
+								</div>
+								<h5 class="card-title py-2" style="margin-top: -3%;">{{ $event->name }}</h5>
+								<p class="price-badge d-flex justify-content-center">{{ 'Rp. ' . number_format($event->price, 0, ',', '.') }}</p>
+								<p class="card-text text-secondary">{{ Str::limit($event->description, 20) }}</p>
 							</div>
 						</div>
 					</a>
-				</div>				
+				</div>
 				@endforeach
-				
 				@foreach ($eventBusiness as $event)
-				<div class="col-md-3 col-sm-6 mt-3 mb-3 kategori-1 business">
-					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}" class="card-link text-dark">
-						<div class="event-card">
-							<div class="card-img-container">
-								<img src="{{$event->thumbnail}}" alt="{{ $event->name }}" class="event-image"/>
-							</div>
-							<div class="event-date">
-								<div class="event-date-content">
-									<span class="event-date-day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</span>
-									<span class="event-date-month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</span>
+				<div class="col-md-3 col-sm-6 mt-3 mb-3  business">
+					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}">
+						<div class="card shadow grow-card" style="width: 100%; border-radius: 15px;">
+							<img src="{{$event->thumbnail}}" class="card-img-top" alt="{{ $event->name }}">
+							<div class="card-body">
+								<div class="location-badge">
+									<i class="bi bi-geo-alt"></i>{{ $event->location }}
 								</div>
-							</div>
-							<div class="event-info">
-								<p class="event-location"><i class="bi bi-geo-alt"></i>{{ $event->location }}</p>
-								<h5 class="event-title">{{ $event->name }}</h5>
-								<p class="event-price">{{ 'Rp. ' . number_format($event->price, 0, ',', '.') }}</p>
-								<p class="event-community">{{ Str::limit($event->description, 20) }}</p>
+								<div class="card-date">
+									<h5>{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</h5>
+									<p>{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</p>
+								</div>
+								<h5 class="card-title py-2" style="margin-top: -3%;">{{ $event->name }}</h5>
+								<p class="price-badge d-flex justify-content-center">{{ 'Rp. ' . number_format($event->price, 0, ',', '.') }}</p>
+								<p class="card-text text-secondary">{{ Str::limit($event->description, 20) }}</p>
 							</div>
 						</div>
 					</a>
-				</div>				
+				</div>
 				@endforeach
-				
 				@foreach ($eventPersonals as $event)
-				<div class="col-md-3 col-sm-6 mt-3 mb-3 kategori-1 self-development">
-					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}" class="card-link text-dark">
-						<div class="event-card">
-							<div class="card-img-container">
-								<img src="{{$event->thumbnail}}" alt="{{ $event->name }}" class="event-image"/>
-							</div>
-							<div class="event-date">
-								<div class="event-date-content">
-									<span class="event-date-day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</span>
-									<span class="event-date-month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</span>
+				<div class="col-md-3 col-sm-6 mt-3 mb-3  self-development">
+					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}">
+						<div class="card shadow grow-card" style="width: 100%; border-radius: 15px;">
+							<img src="{{$event->thumbnail}}" class="card-img-top" alt="{{ $event->name }}">
+							<div class="card-body">
+								<div class="location-badge">
+									<i class="bi bi-geo-alt"></i>{{ $event->location }}
 								</div>
-							</div>
-							<div class="event-info">
-								<p class="event-location"><i class="bi bi-geo-alt"></i>{{ $event->location }}</p>
-								<h5 class="event-title">{{ $event->name }}</h5>
-								<p class="event-price">{{ 'Rp. ' . number_format($event->price, 0, ',', '.') }}</p>
-								<p class="event-community">{{ Str::limit($event->description, 50) }}</p>
+								<div class="card-date">
+									<h5>{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</h5>
+									<p>{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</p>
+								</div>
+								<h5 class="card-title py-2" style="margin-top: -3%;">{{ $event->name }}</h5>
+								<p class="price-badge d-flex justify-content-center">{{ 'Rp. ' . number_format($event->price, 0, ',', '.') }}</p>
+								<p class="card-text text-secondary">{{ Str::limit($event->description, 20) }}</p>
 							</div>
 						</div>
 					</a>
-				</div>				
+				</div>
 				@endforeach
-
 			</div>
 		</div>
 		<nav aria-label="Page navigation example">

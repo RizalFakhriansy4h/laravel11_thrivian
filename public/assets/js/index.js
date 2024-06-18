@@ -16,13 +16,13 @@ function showPosts(category) {
         }
     }
 
-    // Reset classes for all badges
+    // Mereset class-class untuk semua badges
     document.querySelectorAll('.badge-post').forEach(function(btn) {
         btn.classList.remove('active', 'bg-secondary', 'text-light');
         btn.classList.add('bg-light', 'text-dark');
     });
 
-    // Set active class for clicked button
+    // Mengatur kelas aktif untuk tombol yang diklik
     var btn = document.getElementById(category.toLowerCase().replace(/\s/g, '') + 'Btn');
     btn.classList.add('active');
     btn.classList.remove('bg-light', 'text-dark');
@@ -35,15 +35,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileInfo = document.getElementById('profileInfo');
 
     profileLink.addEventListener('click', function() {
-        // Toggle icon
+        // Ikon toggle
         if (userOutlineIcon.style.display === 'none') {
             userOutlineIcon.style.display = 'inline';
             userIcon.style.display = 'none';
-            profileInfo.style.display = 'none'; // Hide profile-info when switching back to outline icon
+            profileInfo.style.display = 'none'; // Menyembunyikan informasi profil saat beralih kembali ke ikon garis besar
         } else {
             userOutlineIcon.style.display = 'none';
             userIcon.style.display = 'inline';
-            profileInfo.style.display = 'block'; // Show profile-info when switching to user icon
+            profileInfo.style.display = 'block'; // Menampilkan informasi profil saat beralih kembali ke ikon garis besar
         }
     });
 });
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
       searchInput.style.display = isVisible ? 'none' : 'block';
   
       if (!isVisible) {
-        searchInput.focus(); // Focus on the input when shown
+        searchInput.focus();
       }
     });
   });

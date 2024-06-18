@@ -112,7 +112,7 @@
     <div class="container">
         
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="/assets/img/thrivan-logo.png" alt="Thrivian.org" width="180" height="35" />
+            <img src="/assets/img/Thrivian Logo_OK.png" alt="Thrivian.org" width="60" height="45" />
         </a>
 
         <ul class="nav me-auto">

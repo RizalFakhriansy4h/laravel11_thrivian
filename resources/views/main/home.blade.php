@@ -4,22 +4,22 @@
 <main class="container-fluid border" style="margin-top: 6%;">
 	<div class="row justify-content-center">
 		<div class="col-3 border-start border-end ml-3 d-none d-md-block" style="overflow-y: auto;">
-			<a href="{{ route('viewpost') }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #13005A; color: #13005A;">
-			<i class="fas fa-plus-circle" style="font-size: 15px; color: #13005A;"></i>
+			<a href="{{ route('viewpost') }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #015AAA; color: #015AAA;">
+			<i class="fas fa-plus-circle" style="font-size: 15px; color: #015AAA;"></i>
 			Create New Post
 			</a>
 			@if ($role == 1)
-			<a href="{{ route('viewcommunity') }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #13005A; color: #13005A;">
-			<i class="fas fa-plus-circle" style="font-size: 15px; color: #13005A;"></i>
+			<a href="{{ route('viewcommunity') }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #015AAA; color: #015AAA;">
+			<i class="fas fa-plus-circle" style="font-size: 15px; color: #015AAA;"></i>
 			Create New Community
 			</a>
-			<a href="{{ route('viewevent') }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #13005A; color: #13005A;">
-			<i class="fas fa-plus-circle" style="font-size: 15px; color: #13005A;"></i>
+			<a href="{{ route('viewevent') }}" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #015AAA; color: #015AAA;">
+			<i class="fas fa-plus-circle" style="font-size: 15px; color: #015AAA;"></i>
 			Create New Event
 			</a>
 			@endif
 			<div class="mt-3">
-				<h6 style="color: #13005A;">My Communities</h6>
+				<h6 style="color: #015AAA;">My Communities</h6>
 				@if ($allMyCommunities->isNotEmpty())
 				@foreach ($allMyCommunities as $myCommunity)
                 <div class="d-flex align-items-center mt-2">
@@ -34,13 +34,13 @@
 					<div style="flex: 1;">
 						<span>You're not yet joined any community.</span>
 					</div>
-					<a href="{{ route('community') }}" class="btn btn-outline-light" style="border-color: #13005A; color: #13005A; margin-left: 10px;">Go find some Community</a>
+					<a href="{{ route('community') }}" class="btn btn-outline-light" style="border-color: #015AAA; color: #015AAA; margin-left: 10px;">Go find some Community</a>
 				</div>
 				@endif
 			</div>
 			<hr class="my-3" style="border-top: 3px solid #E5E5E5;">
 			<div class="mt-3">
-				<h6 class="mb-3" style="color: #13005A;">Upcoming Events</h6>
+				<h6 class="mb-3" style="color: #015AAA;">Upcoming Events</h6>
 				@if($allMyEvents->isNotEmpty())
 				@foreach($allMyEvents as $index => $event)
 				@if($index == 0)
