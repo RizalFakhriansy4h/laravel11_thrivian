@@ -112,7 +112,7 @@
     <div class="container">
         
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="/assets/img/Thrivian Logo_OK.png" alt="Thrivian.org" width="60" height="45" />
+            <img src="{{asset('/assets/img/Thrivian Logo_OK.png')}}" alt="Thrivian.org" width="60" height="45" />
         </a>
 
         <ul class="nav me-auto">
@@ -174,7 +174,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top d-lg-none">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}" style="flex-grow: 1">
-            <img src="/assets/img/thrivan-logo.png" alt="Thrivian.org" width="150" />
+            <img src="{{asset('/assets/img/thrivan-logo.png')}}" alt="Thrivian.org" width="150" />
         </a>
         <a href="search.html" class="search-icon ms-auto me-4">
             <i class="fas fa-search"></i>
@@ -227,7 +227,7 @@
         <li class="nav-item">
             <a href="./pages/profile.html">
                 <div class="rounded-circle overflow-hidden ms-5 mt-1" style="width: 25px; height: 25px; background-color: #f0f0f0;">
-                    <img id="userImage" src="/assets/img/3582.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img id="userImage" src="{{asset('/assets/img/3582.jpg')}}" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </a>
         </li>
@@ -266,7 +266,7 @@
                         @else
                         <div class="d-flex align-items-center mt-2">
                             <div class="rounded-circle overflow-hidden" style="width: 30px; height: 30px; background-color: #f0f0f0;">
-                                <img src="/storage/thumbnail_community/404.jpg" alt="Community Image" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="{{asset('/storage/thumbnail_community/404.jpg')}}" alt="Community Image" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <a href="{{ route('community') }}" class="ms-2 text-decoration-none" style="color: black;">Go find some Community</a>
                         </div>

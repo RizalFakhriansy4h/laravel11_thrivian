@@ -92,9 +92,9 @@
 						@endif
 						<button id="joinButton" type="button" class="btn btn-outline-primary btn-custom-outline px-4" style="border-radius: 30px;" data-bs-toggle="modal" data-bs-target="#memberModal">Members</button>
 						<div class="d-flex align-items-center">
-							<img src="/assets/img/3582.jpg" class="rounded-circle" alt="Profile" style="width: 30px; height: 30px;">
-							<img src="/assets/img/culture_replay_ninja_1054462188.jpg" class="rounded-circle" alt="Profile" style="width: 30px; height: 30px; margin-left: -10px;">
-							<img src="/assets/img/smiling-asian-man-standing-grey-wall.jpg" class="rounded-circle" alt="Profile" style="width: 30px; height: 30px; margin-left: -10px;">
+							<img src="{{asset('/assets/img/3582.jpg')}}" class="rounded-circle" alt="Profile" style="width: 30px; height: 30px;">
+							<img src="{{asset('/assets/img/culture_replay_ninja_1054462188.jpg')}}" class="rounded-circle" alt="Profile" style="width: 30px; height: 30px; margin-left: -10px;">
+							<img src="{{asset('/assets/img/smiling-asian-man-standing-grey-wall.jpg')}}" class="rounded-circle" alt="Profile" style="width: 30px; height: 30px; margin-left: -10px;">
 							<span class="ms-1"><strong>{{ $memberCount }}</strong> Members</span>
 						</div>
 						<div class="d-flex align-items-center">

@@ -50,7 +50,7 @@
             position: relative;
             height: 60vh;
             width: 100%;
-            background: url('/assets/img/comunity_new_banner.png') no-repeat center center/cover;
+            background: url('{{asset('/assets/img/comunity_new_banner.png')}}') no-repeat center center/cover;
         }
 
         #banner-home::before {
@@ -82,7 +82,7 @@
     }
     #register-section {
     position: relative;
-    background: url('/assets/img/comunity_new_banner.png') no-repeat center center/cover;
+    background: url('{{asset('/assets/img/comunity_new_banner.png')}}') no-repeat center center/cover;
     color: white;
     text-align: center;
     height: 80vh;
@@ -200,7 +200,7 @@
         <nav class="navbar navbar-light bg-light fixed-top mb-4">
             <div class="container d-flex justify-content-center"> 
                 <a class="navbar-brand" href="{{route('intro')}}">
-                    <img src="/assets/img/Thrivian Logo_OK.png" alt="" width="50" height="50" style="display: block; margin: 0 auto;">
+                    <img src="{{asset ('/assets/img/Thrivian Logo_OK.png')}}" alt="" width="50" height="50" style="display: block; margin: 0 auto;">
                 </a>
             </div>
         </nav>
@@ -240,7 +240,7 @@
             <div class="container-fluid p-0">
                 <div class="row no-gutters">
                     <div class="col-12">
-                        <img src="/assets/img/banner-tiga.png" alt="Community Image" class="img-fluid w-100">
+                        <img src="{{asset('/assets/img/banner-tiga.png')}}" alt="Community Image" class="img-fluid w-100">
                     </div>
                 </div>
             </div>
@@ -251,7 +251,7 @@
             <div class="container-fluid p-0">
                 <div class="row no-gutters">
                     <div class="col-12">
-                        <img src="/assets/img/Frame 756.png" alt="Community Image" class="img-fluid w-100">
+                        <img src="{{asset('/assets/img/Frame 756.png')}}" alt="Community Image" class="img-fluid w-100">
                     </div>
                 </div>
             </div>
@@ -277,7 +277,7 @@
         <div class="container" style="color: #015AAA;">
             <div class="row text-center text-md-start">
                 <div class="col-md-12 d-flex justify-content-center justify-content-md-start align-items-center mb-3">
-                    <img src="/assets/img/Thrivian Logo_OK.png" alt="logo-thrivian" class="footer-logo">
+                    <img src="{{asset('/assets/img/Thrivian Logo_OK.png')}}" alt="logo-thrivian" class="footer-logo">
                 </div>
                 <hr class="mt-3" style="border-top: 3px solid #E5E5E5;">
                 <div class="col-md-3 footer-col">

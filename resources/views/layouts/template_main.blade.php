@@ -17,7 +17,7 @@
 	</head>
 
 	<div id="splash-screen" class="splash-screen">
-    	<img src="/assets/img/Thrivian Logo_OK.png" alt="Thrivian-logo" class="logo">
+    	<img src="{{asset('/assets/img/Thrivian Logo_OK.png')}}" alt="Thrivian-logo" class="logo">
 	</div>
 
 	<body>
@@ -56,7 +56,7 @@
 		<nav class="navbar navbar-light bg-light fixed-top d-none d-lg-block">
 			<div class="container">
 				<a class="navbar-brand" href="{{ route('home') }}">
-                	<img src="/assets/img/Thrivian Logo_OK.png" alt="Thrivian.org" width="60" height="45" />
+                	<img src="{{asset('/assets/img/Thrivian Logo_OK.png')}}" alt="Thrivian.org" width="60" height="45" />
             	</a>
 				<ul class="nav me-auto">
 					<li class="nav-item">
@@ -116,7 +116,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top d-lg-none">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#" style="flex-grow: 1;">
-				<img src="/assets/img/thrivan-logo.png" alt="Thrivian.org" width="150">
+				<img src="{{asset('/assets/img/thrivan-logo.png')}}" alt="Thrivian.org" width="150">
 				</a>
 				<a href="#" class="search-icon ms-auto me-4">
 				<i class="fas fa-search"></i> 

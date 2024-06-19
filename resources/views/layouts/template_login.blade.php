@@ -59,7 +59,7 @@
             <nav class="navbar navbar-light bg-light fixed-top">
                 <div class="container d-flex justify-content-center"> <!-- Menggunakan flexbox untuk pengaturan posisi -->
                     <a class="navbar-brand" href="{{ route('intro') }}">
-                        <img src="/assets/img/Thrivian Logo_OK.png" alt="" width="80" height="75" style="display: block; margin: 0 auto;">
+                        <img src="{{asset('/assets/img/Thrivian Logo_OK.png')}}" alt="" width="80" height="75" style="display: block; margin: 0 auto;">
                     </a>
                 </div>
             </nav>
@@ -80,11 +80,11 @@
                         ---------------- or continue with ----------------
                     </div>
                     <div class="input-group mb-3 mx-auto" style="width: 400px">
-                        <a class="btn btn-lg btn-light w-100 fs-6 border-dark" href="{{route('google.redirect')}}" style="border-radius: 30px;"><img src="/assets/img/logo-google.png" style="width:20px" class="me-2"><small>Log In with Google</small></a>
+                        <a class="btn btn-lg btn-light w-100 fs-6 border-dark" href="{{route('google.redirect')}}" style="border-radius: 30px;"><img src="{{asset('/assets/img/logo-google.png')}}" style="width:20px" class="me-2"><small>Log In with Google</small></a>
                     </div>
 
                     <div class="input-group mb-3 mx-auto" style="width: 400px">
-                        <a class="btn btn-lg btn-light w-100 fs-6 border-dark" style="border-radius: 30px;"><img src="/assets/img/apple-logo.png" style="width:20px" class="me-2"><small>Sign Up with Apple</small></a>
+                        <a class="btn btn-lg btn-light w-100 fs-6 border-dark" style="border-radius: 30px;"><img src="{{asset('/assets/img/apple-logo.png')}}" style="width:20px" class="me-2"><small>Sign Up with Apple</small></a>
                     </div>
                     <footer>
                         <div class="d-flex justify-content-center text-align-center ">

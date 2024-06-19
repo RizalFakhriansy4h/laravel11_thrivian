@@ -52,7 +52,7 @@ display: none;
 }
 
 .community-background {
-    background-image: url('/assets/img/comunity.jpg');
+    background-image: url('{{asset('/assets/img/comunity.jpg')}}');
     background-size: cover; /* Memastikan gambar mencakup seluruh div */
     background-position: center; /* Membuat agar posisi gambar berada ditengah */
     background-repeat: no-repeat; /* Mencegah pengulangan gambar */
@@ -64,7 +64,7 @@ display: none;
 }
 
 .hero-section {
-  background-image: url('/assets/img/comunity_new_banner.png');
+  background-image: url('{{asset('/assets/img/comunity_new_banner.png')}}');
   background-size: cover;
   height: 40vh;
   display: flex;

@@ -105,7 +105,7 @@
       position: relative;
       width: 100%;
       height: 400px;
-      background: url('/assets/img/banner.jpg') no-repeat center center;
+      background: url('{{asset('/assets/img/banner.jpg')}}') no-repeat center center;
       background-size: cover;
     }
     .event-overlay {
@@ -216,7 +216,7 @@
 		<nav class="navbar navbar-light bg-light fixed-top d-none d-lg-block">
 			<div class="container">
 				<a class="navbar-brand" href="{{ route('home') }}">
-					<img src="/assets/img/Thrivian Logo_OK.png" alt="Thrivian.org" width="60" height="45" />
+					<img src="{{asset('/assets/img/Thrivian Logo_OK.png')}}" alt="Thrivian.org" width="60" height="45" />
 				</a>
 				<ul class="nav me-auto">
 					<li class="nav-item">
@@ -276,7 +276,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top d-lg-none">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#" style="flex-grow: 1">
-				<img src="/assets/img/thrivan-logo.png" alt="Thrivian.org" width="150" />
+				<img src="{{asset('/assets/img/thrivan-logo.png')}}" alt="Thrivian.org" width="150" />
 				</a>
 				<a href="search.html" class="search-icon ms-auto me-4">
 				<i class="fas fa-search"></i>
@@ -328,13 +328,13 @@
 				<li class="nav-item">
 					<a href="./pages/profile.html">
 						<div class="rounded-circle overflow-hidden ms-5 mt-1" style="width: 25px; height: 25px; background-color: #f0f0f0;">
-							<img id="userImage" src="/assets/img/3582.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
+							<img id="userImage" src="{{asset('/assets/img/3582.jpg')}}" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
 						</div>
 					</a>
 				</li>
 			</ul>
 		</nav>
-		<section class="hero d-flex align-items-center" style="background-image: url('/assets/img/bg-event.jpg'); background-size: cover; background-position: center;">
+		<section class="hero d-flex align-items-center" style="background-image: url('{{asset('/assets/img/bg-event.jpg')}}'); background-size: cover; background-position: center;">
 			<div class="container">
 				<div class="row justify-content-end align-items-center mt-5">
 					<div class="col-lg-6">
@@ -396,31 +396,31 @@
 			<div class="row justify-content-center align-items-start">
 				<!-- Gambar-gambar partner -->
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/spotify.png" alt="Partner 1" class="partner-img">
+					<img src="{{asset('/assets/img/spotify.png')}}" alt="Partner 1" class="partner-img">
 				</div>
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/google.png" alt="Partner 2" class="partner-img">
+					<img src="{{asset('/assets/img/google.png')}}" alt="Partner 2" class="partner-img">
 				</div>
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/yt.png" alt="Partner 3" class="partner-img">
+					<img src="{{asset('/assets/img/yt.png')}}" alt="Partner 3" class="partner-img">
 				</div>
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/microsoft.png" alt="Partner 4" class="partner-img">
+					<img src="{{asset('/assets/img/microsoft.png')}}" alt="Partner 4" class="partner-img">
 				</div>
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/gojek.png" alt="Partner 5" class="partner-img">
+					<img src="{{asset('/assets/img/gojek.png')}}" alt="Partner 5" class="partner-img">
 				</div>
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/zoom.png" alt="Partner 6" class="partner-img">
+					<img src="{{asset('/assets/img/zoom.png')}}" alt="Partner 6" class="partner-img">
 				</div>
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/grab.png" alt="Partner 7" class="partner-img">
+					<img src="{{asset('/assets/img/grab.png')}}" alt="Partner 7" class="partner-img">
 				</div>
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/linkedin.png" alt="Partner 8" class="partner-img">
+					<img src="{{asset('/assets/img/linkedin.png')}}" alt="Partner 8" class="partner-img">
 				</div>
 				<div class="col-6 col-md-4 col-lg-2 partner-col">
-					<img src="/assets/img/indihome.png" alt="Partner 9" class="partner-img">
+					<img src="{{asset('/assets/img/indihome.png')}}" alt="Partner 9" class="partner-img">
 				</div>
 			</div>
 		</div>
@@ -428,7 +428,7 @@
 			<div class="container">
 				<div class="row text-center text-md-start">
 					<div class="col-md-12 d-flex justify-content-center justify-content-md-start align-items-center mb-3">
-						<img src="/assets/img/thrivian-white.png" alt="logo-thrivian" class="footer-logo">
+						<img src="{{asset('/assets/img/thrivian-white.png')}}" alt="logo-thrivian" class="footer-logo">
 					</div>
 					<hr class="mt-3" style="border-top: 3px solid #E5E5E5;">
 					<div class="col-md-3 footer-col">
