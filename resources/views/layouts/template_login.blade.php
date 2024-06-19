@@ -89,9 +89,7 @@
                     <footer>
                         <div class="d-flex justify-content-center text-align-center ">
                             <span class= "small fs-9" style="text-align: center; text-decoration: none;">
-                                <a href="about_us.html" class="text-black">About Us</a> • 
-                                <a href="privacy_terms.html" class="text-black">Privacy & Policy</a> • 
-                                <a href="more.html" class="text-black">More</a>
+                                <a href="{{route('privacy')}}" class="text-black">Privacy & Policy</a>
                                 <p class=" fs-9">Thrivian.org © 2024</p>
                             </span>
                       </footer>

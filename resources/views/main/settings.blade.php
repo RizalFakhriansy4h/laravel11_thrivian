@@ -14,7 +14,7 @@
 			<a class="nav-link text-secondary" href="#" style="margin-right: 9px; margin-left: 9px;" onclick="showPosts('notification')">Notification</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link text-secondary" href="#" style="margin-right: 9px; margin-left: 9px;" onclick="showPosts('privacy')">Privacy & Security</a>
+			<a href="{{route('privacy')}}" class="text-black">Privacy & Policy</a>
 		</li>
 	</ul>
 </div>

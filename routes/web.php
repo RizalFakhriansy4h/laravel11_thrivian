@@ -142,4 +142,10 @@ Route::get('/introduction', function () {
 
 })->name('intro');
 
+Route::get('/privacyterms', function () {
+
+    return view('privacy_terms');
+
+})->name('privacy');
+
 
