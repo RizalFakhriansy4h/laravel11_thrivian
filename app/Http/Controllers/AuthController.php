@@ -71,20 +71,24 @@ class AuthController extends Controller
             'username' => Str::slug($request->input('username')),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
+            'is_active' => 1,
         ]);
 
-        // Buat kode OTP secara acak
-        $otp = mt_rand(100000, 999999);
+        // // Buat kode OTP secara acak
+        // $otp = mt_rand(100000, 999999);
 
         // Simpan kode OTP ke dalam database
-        $user->otp = $otp;
+        // $user->otp = $otp;
         $user->save();
 
-        // Kirim email dengan kode OTP
-        Mail::to($request->input('email'))->send(new OtpMail($otp));
+        // // Kirim email dengan kode OTP
+        // Mail::to($request->input('email'))->send(new OtpMail($otp));
 
-        // Redirect ke halaman untuk memasukkan OTP
-        return redirect()->route('otp.form', ['email' => $user->email]);
+        // // Redirect ke halaman untuk memasukkan OTP
+        // return redirect()->route('otp.form', ['email' => $user->email]);
+
+        return redirect('/login')->with('alert', 'Akun Anda sekarang aktif Siap Untuk Login.');
+
     }
 
 
