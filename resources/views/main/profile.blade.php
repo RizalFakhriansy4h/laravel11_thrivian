@@ -82,7 +82,7 @@
 					<hr class="mt-1" style="border-top: 3px solid #E5E5E5;">
 				</div>
 				<div class="all-posts" style="max-height: 500px; overflow-y: auto;">
-					@foreach ($myposts as $mypost)
+				@foreach ($myposts as $mypost)
 					<div class="post mt-4 me-5 mb-5" data-category="Posts">
 						<div class="d-flex align-items-center mb-2">
 							<div class="rounded-circle overflow-hidden me-2" style="width: 50px; height: 50px; background-color: #f0f0f0;">
@@ -100,20 +100,20 @@
 						</div>
 						<div class="row mb-0 ms-5">
 							<div class="col">
-								@if ( $mypost->thumbnail )
-								<img src="{{ $mypost->thumbnail }}" class="img-fluid w-25" style="border-radius: 15px;" alt="Image">								
+								@if ($mypost->thumbnail)
+									<img src="{{ $mypost->thumbnail }}" class="img-fluid w-75" style="border-radius: 15px;" alt="Image">								
 								@endif
 								<p class="mb-0 mt-1" style="text-align: justify;">{{ $mypost->content }}</p>
 							</div>
 						</div>
 						<div class="row justify-content-end mt-3 me-2">
-							<div class="col-auto">
+							<div class="col-auto d-flex">
 								<a class="link-posts me-3 me-md-5" onclick="toggleLike({{ $mypost->id }})">
-								<i id="like-{{ $mypost->id }}" class="thumbs up outline black icon" style="font-size: 20px; {{ $mypost->liked ? 'display: none;' : '' }}"></i>
-								<i id="liked-{{ $mypost->id }}" class="thumbs up black icon" style="font-size: 20px; {{ $mypost->liked ? '' : 'display: none;' }}"></i>
-								<span id="likeCount-{{ $mypost->id }}" style="margin-left: 5px; color: black;">
-								{{ $mypost->likes()->count() }}
-								</span>
+									<i id="like-{{ $mypost->id }}" class="thumbs up outline black icon" style="font-size: 20px; {{ $mypost->liked ? 'display: none;' : '' }}"></i>
+									<i id="liked-{{ $mypost->id }}" class="thumbs up black icon" style="font-size: 20px; {{ $mypost->liked ? '' : 'display: none;' }}"></i>
+									<span id="likeCount-{{ $mypost->id }}" style="margin-left: 5px; color: black;">
+										{{ $mypost->likes()->count() }}
+									</span>
 								</a>
 								<form id="like-form-{{ $mypost->id }}" method="POST" action="{{ route('like.post') }}" style="display: none;">
 									@csrf
@@ -121,81 +121,103 @@
 								</form>
 								<a class="link-posts me-3 me-md-5" href="#">
 									<i class="comment alternate outline black icon" style="font-size: 20px;"></i>
-									<!-- <span style="margin-left: 5px; color: black;">5</span> -->
 								</a>
 								<a class="link-posts me-3 me-md-5" onclick="toggleBookmark({{ $mypost->id }})">
-								<i id="bookmark-{{ $mypost->id }}" class="bookmark outline black icon" style="font-size: 20px; {{ $mypost->bookmarked ? 'display: none;' : '' }}"></i>
-								<i id="bookmarked-{{ $mypost->id }}" class="bookmark icon" style="font-size: 20px; color: orange; {{ $mypost->bookmarked ? '' : 'display: none;' }}"></i>
-								<span id="bookmarkCount-{{ $mypost->id }}" style="margin-left: 5px; color: black;">
-								{{ $mypost->bookmarks()->count() }}
-								</span>
+									<i id="bookmark-{{ $mypost->id }}" class="bookmark outline black icon" style="font-size: 20px; {{ $mypost->bookmarked ? 'display: none;' : '' }}"></i>
+									<i id="bookmarked-{{ $mypost->id }}" class="bookmark icon" style="font-size: 20px; color: orange; {{ $mypost->bookmarked ? '' : 'display: none;' }}"></i>
+									<span id="bookmarkCount-{{ $mypost->id }}" style="margin-left: 5px; color: black;">
+										{{ $mypost->bookmarks()->count() }}
+									</span>
 								</a>
 								<form id="bookmark-form-{{ $mypost->id }}" method="POST" action="{{ route('bookmark.post') }}" style="display: none;">
 									@csrf
 									<input type="hidden" name="post_id" value="{{ $mypost->id }}">
 								</form>
-								<script>
-									function toggleLike(postId) {
-									    var likeIcon = document.getElementById('like-' + postId);
-									    var likedIcon = document.getElementById('liked-' + postId);
-									    var likeCount = document.getElementById('likeCount-' + postId);
-									
-									    fetch('{{ route('like.post') }}', {
-									        method: 'POST',
-									        headers: {
-									            'Content-Type': 'application/json',
-									            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-									        },
-									        body: JSON.stringify({
-									            post_id: postId
-									        })
-									    })
-									    .then(response => response.json())
-									    .then(data => {
-									        if (data.liked) {
-									            likeIcon.style.display = 'none';
-									            likedIcon.style.display = 'inline';
-									        } else {
-									            likeIcon.style.display = 'inline';
-									            likedIcon.style.display = 'none';
-									        }
-									        likeCount.textContent = data.likeCount;
-									    });
-									}
-									
-									function toggleBookmark(postId) {
-									    var bookmarkIcon = document.getElementById('bookmark-' + postId);
-									    var bookmarkedIcon = document.getElementById('bookmarked-' + postId);
-									    var bookmarkCount = document.getElementById('bookmarkCount-' + postId);
-									
-									    fetch('{{ route('bookmark.post') }}', {
-									        method: 'POST',
-									        headers: {
-									            'Content-Type': 'application/json',
-									            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-									        },
-									        body: JSON.stringify({
-									            post_id: postId
-									        })
-									    })
-									    .then(response => response.json())
-									    .then(data => {
-									        if (data.bookmarked) {
-									            bookmarkIcon.style.display = 'none';
-									            bookmarkedIcon.style.display = 'inline';
-									        } else {
-									            bookmarkIcon.style.display = 'inline';
-									            bookmarkedIcon.style.display = 'none';
-									        }
-									        bookmarkCount.textContent = data.bookmarkCount;
-									    });
-									}
-								</script>
+								
+								<div class="dropdown link-posts me-1">
+									<a href="#" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+										<i class="fas fa-ellipsis-h" style="font-size: 20px; color: black;"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+										<div class="text-center">
+											<form id="delete-form-{{ $mypost->id }}" method="POST" action="{{ route('posts.destroy', $mypost->id) }}">
+												@csrf
+												@method('DELETE')
+												<button class="btn btn-outline-danger" type="button" onclick="confirmDelete({{ $mypost->id }})">Delete</button>
+											</form>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<hr class="mt-3" style="border-top: 3px solid #E5E5E5;">
 					</div>
-					@endforeach
+				@endforeach
+
+				<script>
+					function toggleLike(postId) {
+						var likeIcon = document.getElementById('like-' + postId);
+						var likedIcon = document.getElementById('liked-' + postId);
+						var likeCount = document.getElementById('likeCount-' + postId);
+
+						fetch('{{ route('like.post') }}', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+								'X-CSRF-TOKEN': '{{ csrf_token() }}'
+							},
+							body: JSON.stringify({
+								post_id: postId
+							})
+						})
+						.then(response => response.json())
+						.then(data => {
+							if (data.liked) {
+								likeIcon.style.display = 'none';
+								likedIcon.style.display = 'inline';
+							} else {
+								likeIcon.style.display = 'inline';
+								likedIcon.style.display = 'none';
+							}
+							likeCount.textContent = data.likeCount;
+						});
+					}
+
+					function toggleBookmark(postId) {
+						var bookmarkIcon = document.getElementById('bookmark-' + postId);
+						var bookmarkedIcon = document.getElementById('bookmarked-' + postId);
+						var bookmarkCount = document.getElementById('bookmarkCount-' + postId);
+
+						fetch('{{ route('bookmark.post') }}', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+								'X-CSRF-TOKEN': '{{ csrf_token() }}'
+							},
+							body: JSON.stringify({
+								post_id: postId
+							})
+						})
+						.then(response => response.json())
+						.then(data => {
+							if (data.bookmarked) {
+								bookmarkIcon.style.display = 'none';
+								bookmarkedIcon.style.display = 'inline';
+							} else {
+								bookmarkIcon.style.display = 'inline';
+								bookmarkedIcon.style.display = 'none';
+							}
+							bookmarkCount.textContent = data.bookmarkCount;
+						});
+					}
+
+					function confirmDelete(postId) {
+						if (confirm('Are you sure you want to delete this post?')) {
+							document.getElementById('delete-form-' + postId).submit();
+						}
+					}
+				</script>
+
 					@foreach ($likeposts as $likepost)
 					<div class="post mt-4 me-5" style="display: none;" data-category="Likes">
 						<div class="d-flex align-items-center mb-2">
@@ -215,7 +237,7 @@
 						<div class="row mb-0 ms-5">
 							<div class="col">
 								@if ($likepost->post->thumbnail)
-								<img src="{{ $likepost->post->thumbnail }}" class="img-fluid w-25" style="border-radius: 15px; width: 100%; height: 100%;" alt="Image">
+								<img src="{{ $likepost->post->thumbnail }}" class="img-fluid w-75" style="border-radius: 15px; width: 100%; height: 100%;" alt="Image">
 								@endif
 								<p class="mb-0">{{ $likepost->post->content }}</p>
 							</div>
@@ -329,7 +351,7 @@
 						<div class="row mb-0 ms-5">
 							<div class="col">
 								@if ($savepost->post->thumbnail)
-								<img src="{{ $savepost->post->thumbnail }}" class="img-fluid w-25" style="border-radius: 15px; width: 100%; height: 100%;" alt="Image">
+								<img src="{{ $savepost->post->thumbnail }}" class="img-fluid w-75" style="border-radius: 15px; width: 100%; height: 100%;" alt="Image">
 								@endif
 								<p class="mb-0">{{ $savepost->post->content }}</p>
 							</div>

@@ -181,5 +181,19 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Comment added successfully.');
     }
 
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+
+        if (Auth::id() !== $post->creator_id) {
+            return redirect()->back()->with('error', 'You do not have permission to delete this post.');
+        }
+
+        $post->delete();
+
+        return redirect()->back()->with('success', 'Post deleted successfully.');
+    }
+
+
     
 }

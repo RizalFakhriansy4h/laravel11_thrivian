@@ -57,6 +57,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/community/join', [CommunityController::class, 'joinCommunity'])->name('community.join');
     Route::post('/community/leave', [CommunityController::class, 'leaveCommunity'])->name('community.leave');
 
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+
     Route::post('/requestevent', [EventController::class, 'requestEvent'])->name('requestEvent');
     
     Route::group(['middleware' => ['auth', 'isAdminCommunity']], function() {
