@@ -87,7 +87,6 @@
   transition: transform 0.3s ease-in-out;
 }
 
-
 .card-body {
   padding: 15px;
 }
@@ -130,6 +129,14 @@
   border-radius: 8px;
   display: inline-block;
   text-align: center;
+}
+
+.grow-card {
+  transition: transform 0.3s ease;
+  }
+
+  .grow-card:hover {
+  transform: scale(1.05);
 }
 
 @media (min-width: 992px) {
@@ -252,3 +259,40 @@
   color: white;
 }
 
+/* Navbar Desktop */
+.navbar-light .nav-link:hover .fa-search {
+  color: #015AAA; /* Warna untuk ikon search saat dihover */
+}
+
+.navbar-light .nav-link:hover .bi-envelope {
+  color: #015AAA; /* Warna untuk ikon envelope saat dihover */
+}
+
+.navbar-light .nav-link:hover .bi-bell {
+  color: #015AAA; /* Warna untuk ikon bell saat dihover */
+}
+
+/* Navbar Mobile */
+.navbar-light .nav-link:hover .fas.fa-search {
+  color: #015AAA; /* Warna untuk ikon search di mobile saat dihover */
+}
+
+.test:hover{
+  color: orange;
+}
+
+/* Warna hover likes, comment, dll pada page utama */
+.like-icon {
+  color: black;
+  transition: color 0.3s;
+}
+
+.link-posts:hover .like-icon {
+  color: #ff4500; /* Ganti  warna saat hover */
+}
+
+.like-count {
+  margin-left: 8px;
+}
+
+a { color: inherit; }

@@ -306,19 +306,19 @@ display: none;
 			</div>
 			<div class="row">
 				@foreach ($commFinances as $cb)
-				<div class="col-md-4 col-sm-6 mb-4">
-					<div class="card card-custom">
-						<div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
-						<img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="Card image">
-						<div class="card-body text-center mt-5 pt-5">
-							<h5 class="card-title mt-5">{{ $cb->name }}</h5>
-							<p class="card-text">{{ $cb->description }}</p>
-							<div class="d-flex justify-content-center mt-3">
-								<a href="{{ route('community.detail', ['slug' => $cb->slug]) }}" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
-							</div>
-						</div>
-					</div>
-				</div>				
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom"> 
+                        <div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
+                        <img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="{{ $cb->name }}">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">{{ $cb->name }}</h5>
+                            <p class="card-text">{{ Str::limit($cb->description, 25) }}</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="{{ route('community.detail', ['slug' => $cb->slug]) }}" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 				@endforeach
 			</div>
 			@endif
@@ -329,19 +329,19 @@ display: none;
 			</div>
 			<div class="row">
 				@foreach ($commBusiness as $cb)
-				<div class="col-md-4 col-sm-6 mb-4">
-					<div class="card card-custom">
-						<div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
-						<img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="Card image">
-						<div class="card-body text-center mt-5 pt-5">
-							<h5 class="card-title mt-5">{{ $cb->name }}</h5>
-							<p class="card-text">{{ $cb->description }}</p>
-							<div class="d-flex justify-content-center mt-3">
-								<a href="{{ route('community.detail', ['slug' => $cb->slug]) }}" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
-							</div>
-						</div>
-					</div>
-				</div>				
+				<div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom"> 
+                        <div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
+                        <img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="{{ $cb->name }}">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">{{ $cb->name }}</h5>
+                            <p class="card-text">{{ Str::limit($cb->description, 25) }}</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="{{ route('community.detail', ['slug' => $cb->slug]) }}" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>			
 				@endforeach
 			</div>
 			@endif
@@ -352,19 +352,19 @@ display: none;
 			</div>
 			<div class="row">
 				@foreach ($commPersonals as $cb)
-				<div class="col-md-4 col-sm-6 mb-4">
-					<div class="card card-custom">
-						<div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
-						<img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="Card image">
-						<div class="card-body text-center mt-5 pt-5">
-							<h5 class="card-title mt-5">{{ $cb->name }}</h5>
-							<p class="card-text">{{ $cb->description }}</p>
-							<div class="d-flex justify-content-center mt-3">
-								<a href="{{ route('community.detail', ['slug' => $cb->slug]) }}" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
-							</div>
-						</div>
-					</div>
-				</div>				
+				<div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom"> 
+                        <div class="card-bg" style="background-image: url('{{ $cb->thumbnail }}');"></div>
+                        <img src="{{ $cb->advert_thumbnail }}" class="card-img-top border-dark" alt="{{ $cb->name }}">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">{{ $cb->name }}</h5>
+                            <p class="card-text">{{ Str::limit($cb->description, 25) }}</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="{{ route('community.detail', ['slug' => $cb->slug]) }}" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>			
 				@endforeach
 			</div>
 			@endif

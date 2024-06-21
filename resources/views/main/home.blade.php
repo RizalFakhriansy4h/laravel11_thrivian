@@ -39,47 +39,50 @@
 				@endif
 			</div>
 			<hr class="my-3" style="border-top: 3px solid #E5E5E5;">
-			<div class="mt-3">
-				<h6 class="mb-3" style="color: #015AAA;">Upcoming Events</h6>
-				@if($allMyEvents->isNotEmpty())
+			<div class="mt-3 ps-3 me-3">
+			<h6 style="color: #015AAA;" class="fw-bold">Upcoming Events</h6>
+			@if($allMyEvents->isNotEmpty())
 				@foreach($allMyEvents as $index => $event)
 				@if($index == 0)
-                <div class="card mb-3" style="border-radius: 15px; overflow: hidden;">
-                    <div class="position-relative">
-                        <img src="{{ $event->thumbnail }}" class="card-img-top img-fluid" alt="{{ $event->name }}">
-                        <div class="date-badge">
-                            <span class="badge">
-                                <div class="day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</div>
-                                <div class="month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</div>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title fs-6"><a href="{{ route('event.detail', ['slug' => $event->slug]) }}" style="text-decoration: none;">{{ $event->name }}</a></h5>
-                        <p class="card-text">{{ Str::limit($event->description, 50) }}</p>
-                    </div>
-                </div>
-
+				<div class="card mb-3 grow-card" style="border-radius: 15px; overflow: hidden;">
+					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}">
+						<div class="position-relative">
+							<img src="{{ $event->thumbnail }}" class="card-img-top img-fluid" alt="{{ $event->name }}">
+							<div class="date-badge">
+								<span class="badge">
+									<div class="day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</div>
+									<div class="month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</div>
+								</span>
+							</div>
+						</div>
+						<div class="card-body">
+							<h5 class="card-title fs-6">{{ $event->name }}</h5>
+							<p class="card-text">{{ Str::limit($event->description, 50) }}</p>
+						</div>
+					</a>
+				</div>
 				@else
-                <div class="card mb-3" style="border-radius: 15px; overflow: hidden;">
-                    <div class="row g-0">
-                        <div class="col-4 position-relative">
-                            <img src="{{ $event->thumbnail }}" class="img-fluid rounded-start" alt="{{ $event->name }}">
-                            <div class="date-badge">
-                                <span class="badge">
-                                    <div class="day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</div>
-                                    <div class="month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</div>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                <h5 class="card-title fs-6"><a href="{{ route('event.detail', ['slug' => $event->slug]) }}">{{ $event->name }}</a></h5>
-                                <p class="card-text">{{ Str::limit($event->description, 25) }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				<div class="card mb-3 grow-card" style="border-radius: 15px; overflow: hidden;">
+					<a href="{{ route('event.detail', ['slug' => $event->slug]) }}">
+						<div class="row g-0">
+							<div class="col-4 position-relative">
+								<img src="{{ $event->thumbnail }}" class="img-fluid rounded-start" alt="{{ $event->name }}">
+								<div class="date-badge">
+									<span class="badge">
+										<div class="day">{{ \Carbon\Carbon::parse($event->start_date)->format('j') }}</div>
+										<div class="month">{{ \Carbon\Carbon::parse($event->start_date)->format('M') }}</div>
+									</span>
+								</div>
+							</div>
+							<div class="col-8">
+								<div class="card-body">
+									<h5 class="card-title fs-6">{{ $event->name }}</h5>
+									<p class="card-text">{{ Str::limit($event->description, 25) }}</p>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
 				@endif
 				@endforeach
 				@else

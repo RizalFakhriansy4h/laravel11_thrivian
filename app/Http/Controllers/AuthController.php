@@ -127,8 +127,8 @@ class AuthController extends Controller
             $user->avatar = $googleUser->avatar;
             $user->password = bcrypt('random_password');
             $user->save();
-        }
 
+        }
         // Login pengguna
         Auth::login($user);
 

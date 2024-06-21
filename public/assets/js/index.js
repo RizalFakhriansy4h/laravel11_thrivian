@@ -1,3 +1,23 @@
+// Fungsi mengganti warna hover icon like, comments, dll pada index.html
+function changeIconColor(iconId, countId, color) {
+    document.getElementById(iconId).style.setProperty('color', color, 'important');
+    document.getElementById(countId).style.setProperty('color', color, 'important');
+}
+
+function toggleBookmark(event, iconId, countId) {
+    event.preventDefault();
+    const icon = document.getElementById(iconId);
+    const count = document.getElementById(countId);
+    
+    if (icon.classList.contains('outline')) {
+        icon.classList.remove('outline');
+        count.textContent = parseInt(count.textContent) + 1;
+    } else {
+        icon.classList.add('outline');
+        count.textContent = parseInt(count.textContent) - 1;
+    }
+}
+
 window.addEventListener('load', function() {
     setTimeout(function() {
         document.getElementById('splash-screen').style.display = 'none';
@@ -16,13 +36,13 @@ function showPosts(category) {
         }
     }
 
-    // Mereset class-class untuk semua badges
+    // Reset classes for all badges
     document.querySelectorAll('.badge-post').forEach(function(btn) {
         btn.classList.remove('active', 'bg-secondary', 'text-light');
         btn.classList.add('bg-light', 'text-dark');
     });
 
-    // Mengatur kelas aktif untuk tombol yang diklik
+    // Set active class for clicked button
     var btn = document.getElementById(category.toLowerCase().replace(/\s/g, '') + 'Btn');
     btn.classList.add('active');
     btn.classList.remove('bg-light', 'text-dark');
@@ -35,19 +55,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileInfo = document.getElementById('profileInfo');
 
     profileLink.addEventListener('click', function() {
-        // Ikon toggle
+        // Toggle icon
         if (userOutlineIcon.style.display === 'none') {
             userOutlineIcon.style.display = 'inline';
             userIcon.style.display = 'none';
-            profileInfo.style.display = 'none'; // Menyembunyikan informasi profil saat beralih kembali ke ikon garis besar
+            profileInfo.style.display = 'none'; // Hide profile-info when switching back to outline icon
         } else {
             userOutlineIcon.style.display = 'none';
             userIcon.style.display = 'inline';
-            profileInfo.style.display = 'block'; // Menampilkan informasi profil saat beralih kembali ke ikon garis besar
+            profileInfo.style.display = 'block'; // Show profile-info when switching to user icon
         }
     });
 });
 
+// buat fill button like
 function toggleIcon(event, outlineId, solidId, countId) {
     var likeIconOutline = document.getElementById(outlineId);
     var likeIconSolid = document.getElementById(solidId);
@@ -67,6 +88,7 @@ function toggleIcon(event, outlineId, solidId, countId) {
     event.preventDefault();
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     var toggleButton = document.getElementById('toggleSearch');
     var searchInput = document.getElementById('searchInput');
@@ -76,25 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
       searchInput.style.display = isVisible ? 'none' : 'block';
   
       if (!isVisible) {
-        searchInput.focus();
+        searchInput.focus(); // Focus on the input when shown
       }
     });
   });
 
-  document.addEventListener("DOMContentLoaded", function() {
-  const posts = document.querySelectorAll('.post');
-  posts.forEach(post => {
-      post.querySelector('.full-post').addEventListener('click', function() {
-          posts.forEach(p => p.classList.remove('active-post', 'inactive-post'));
-          post.classList.add('active-post');
-          posts.forEach(p => {
-              if (p !== post) p.classList.add('inactive-post');
-          });
-          const truncated = post.querySelector('.truncated');
-          const fullContent = post.querySelector('.full-content');
-          truncated.classList.add('d-none');
-          fullContent.classList.remove('d-none');
-      });
-  });
-});
+
 
