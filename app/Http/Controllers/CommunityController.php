@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CommunityUser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CommunityController extends Controller
 {
@@ -90,34 +91,31 @@ class CommunityController extends Controller
         if ($request->hasFile('thumbnail')) {
             $img = $request->file('thumbnail');
             
-            $destinationPath = public_path('storage/thumbnail_community');
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0777, true);
-            }
-            
+            // Generate nama file yang unik untuk menghindari overwrite
             $newName = uniqid() . '_' . $img->getClientOriginalName();
             
-            $img->move($destinationPath, $newName);
+            // Simpan file ke direktori 'storage/app/public/thumbnail_community'
+            $filePath = $img->storeAs('public/thumbnail_community', $newName);
             
-            $thumbnailUrl = "/storage/thumbnail_community/$newName";
+            // Buat URL untuk diakses dari web
+            $thumbnailUrl = Storage::url($filePath);
             $community->thumbnail = $thumbnailUrl;
         }
         
         if ($request->hasFile('advert_thumbnail')) {
             $img = $request->file('advert_thumbnail');
             
-            $destinationPath = public_path('storage/advert_thumbnail_community');
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0777, true);
-            }
-            
+            // Generate nama file yang unik untuk menghindari overwrite
             $newName = uniqid() . '_' . $img->getClientOriginalName();
             
-            $img->move($destinationPath, $newName);
+            // Simpan file ke direktori 'storage/app/public/advert_thumbnail_community'
+            $filePath = $img->storeAs('public/advert_thumbnail_community', $newName);
             
-            $advert_thumbnailUrl = "/storage/advert_thumbnail_community/$newName";
+            // Buat URL untuk diakses dari web
+            $advert_thumbnailUrl = Storage::url($filePath);
             $community->advert_thumbnail = $advert_thumbnailUrl;
         }
+        
 
 
 

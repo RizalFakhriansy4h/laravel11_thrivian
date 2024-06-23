@@ -204,7 +204,7 @@
 	}
 	}
 </style>
-<link rel="stylesheet" href="/assets/css/events.css">
+<link rel="stylesheet" href="{{asset('/assets/css/events.css')}}">
 <main class="container-fluid" style="margin-top: 69px">
 	<div class="container">
 		<div class="row">

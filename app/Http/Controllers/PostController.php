@@ -11,6 +11,7 @@ use App\Models\LikesPost;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -62,22 +63,17 @@ class PostController extends Controller
         if ($request->hasFile('thumbnail')) {
             $img = $request->file('thumbnail');
             
-            // Pastikan direktori tujuan ada atau buat jika belum ada
-            $destinationPath = public_path('storage/thumbnail_post'); // Lokasi penyimpanan di public
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0777, true); // Membuat direktori jika tidak ada
-            }
-            
             // Generate nama file yang unik untuk menghindari overwrite
             $newName = uniqid() . '_' . $img->getClientOriginalName();
             
-            // Pindahkan file ke direktori yang diinginkan
-            $img->move($destinationPath, $newName);
+            // Simpan file ke direktori 'storage/app/public/thumbnail_post'
+            $path = $img->storeAs('public/thumbnail_post', $newName);
             
             // Buat URL untuk diakses dari web
-            $thumbnailUrl = "/storage/thumbnail_post/$newName";
+            $thumbnailUrl = Storage::url($path);
             $postData->thumbnail = $thumbnailUrl;
-        }     
+        }
+        
         
 
         $postData->save();

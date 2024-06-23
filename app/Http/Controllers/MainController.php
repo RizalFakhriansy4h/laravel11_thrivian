@@ -12,6 +12,7 @@ use App\Models\LikesPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
 {
@@ -211,13 +212,18 @@ class MainController extends Controller
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $file = $request->file('image');
+            
+            // Generate nama file yang unik untuk menghindari overwrite
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = public_path('storage/avatar');
-
-            $file->move($filePath, $fileName);
-
-            $user->avatar = '/storage/avatar/' . $fileName;
+            
+            // Simpan file ke direktori 'storage/app/public/avatar'
+            $filePath = $file->storeAs('public/avatar', $fileName);
+            
+            // Buat URL untuk diakses dari web
+            $avatarUrl = Storage::url($filePath);
+            $user->avatar = $avatarUrl;
         }
+        
 
         // Simpan perubahan
         $user->save();

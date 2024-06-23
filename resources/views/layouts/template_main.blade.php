@@ -10,10 +10,10 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css">
-		<link rel="icon" type="image/png" href="/assets/img/logo.png">
+		<link rel="icon" type="image/png" href="{{asset('/assets/img/logo1.png')}}">
 		@yield('advanced_css')
-		<link rel="stylesheet" href="/assets/css/style.css">
-		<script src="/assets/js/index.js"></script>
+		<link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
+		<script src="{{asset('/assets/js/index.js')}}"></script>
 	</head>
 
 	<div id="splash-screen" class="splash-screen">

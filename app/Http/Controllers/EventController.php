@@ -8,6 +8,7 @@ use App\Models\EventUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -84,18 +85,17 @@ class EventController extends Controller
         if ($request->hasFile('thumbnail')) {
             $img = $request->file('thumbnail');
             
-            $destinationPath = public_path('storage/thumbnail_event');
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0777, true);
-            }
-            
+            // Generate nama file yang unik untuk menghindari overwrite
             $newName = uniqid() . '_' . $img->getClientOriginalName();
             
-            $img->move($destinationPath, $newName);
+            // Simpan file ke direktori 'storage/app/public/thumbnail_event'
+            $path = $img->storeAs('public/thumbnail_event', $newName);
             
-            $thumbnailUrl = "/storage/thumbnail_Event/$newName";
+            // Buat URL untuk diakses dari web
+            $thumbnailUrl = Storage::url($path);
             $event->thumbnail = $thumbnailUrl;
         }
+        
 
         $event->save();
 
